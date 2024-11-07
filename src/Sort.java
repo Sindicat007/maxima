@@ -16,8 +16,24 @@ public class Sort {
             System.out.println("Массив не нуждается в сортировке, так как содержит 1 значение");
         }
         else {
+            int [] resultArray = new int[arr.length];
+            int minVal, bufVal;
+            minVal = 0;
+            int maxVal = Integer.MAX_VALUE;
 
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[i] <= minVal) {
+                    resultArray[i] = minVal = arr[i];
+                }
+                else if (arr[i] > minVal){}
+            }
         }
 
     }
+//    public static int swapValues(int a, int b) {
+//        a = a ^ b;
+//        b = a ^ b;
+//        a = a ^ b;
+//        return
+//    }
 }
