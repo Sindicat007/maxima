@@ -1,4 +1,4 @@
-public class Sort {
+public class SortArrays {
        public static void main(String[] args) {
         int[] arrayTask = new int[]{12, 3, 2, 5, 7, 21, 3, 4, 9, 24};
 
