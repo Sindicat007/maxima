@@ -1,1 +1,1 @@
-Info about Git task
+Info about Sort Task
