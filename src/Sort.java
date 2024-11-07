@@ -1,39 +1,35 @@
-import java.util.Arrays;
-
 public class Sort {
     public static void main(String[] args) {
-        int [] arrayTask = {1, 3, 2, 5, 7, 21, 3, 4, 9, 12};
-        Arrays.sort(arrayTask);
-        for (int i = 0; i < arrayTask.length; i++){
+        int [] arrayTask = {12, 3, 2, 5, 7, 21, 3, 4, 9, 24};
+//        Arrays.sort(arrayTask);
+        long startTime = System.nanoTime();
+        sortArr(arrayTask);
+        for (int i = 0; i < arrayTask.length-1; i++){
             System.out.println(arrayTask[i]);
         }
+        long endTime = System.nanoTime();
+        long timeElapsed = endTime - startTime;
+        System.out.print(timeElapsed);
+
+
     }
-    public static void sorting(int[] arr) {
+    public static void sortArr(int[] arr) {
         if(arr.length == 0){
             System.out.println("Массив не содержит элементов");
         }
         else if(arr.length == 1){
-            System.out.println("Массив не нуждается в сортировке, так как содержит 1 значение");
+            System.out.println("Массив не нуждается в сортировке, так как содержит 1 элемент");
         }
         else {
-            int [] resultArray = new int[arr.length];
-            int minVal, bufVal;
-            minVal = 0;
-            int maxVal = Integer.MAX_VALUE;
-
-            for (int i = 0; i < arr.length; i++) {
-                if (arr[i] <= minVal) {
-                    resultArray[i] = minVal = arr[i];
+            for (int i = 0; i < arr.length - 1; i++){
+                for (int k = 0; k < arr.length - i - 1; k++){
+                    if(arr[k + 1] < arr[k]){
+                        int swap = arr[k];
+                        arr[k] = arr[k + 1];
+                        arr[k + 1] = swap;
+                    }
                 }
-                else if (arr[i] > minVal){}
             }
         }
-
     }
-//    public static int swapValues(int a, int b) {
-//        a = a ^ b;
-//        b = a ^ b;
-//        a = a ^ b;
-//        return
-//    }
 }
