@@ -8,16 +8,15 @@ public class SortArrays {
             System.out.println(arrayTask[i]);
         }
         long endTime = System.nanoTime();
-
         long timeElapsed = endTime - startTime;
-        System.out.print(timeElapsed);
+        System.out.print("Выполнено за " + timeElapsed + " наносекунд");
     }
 
     public static void sortArr(int[] arr) {
         if (arr.length == 0) {
-            System.out.println("Массив не содержит эллементов");
+            System.out.println("Массив не содержит элементов");
         } else if (arr.length == 1) {
-            System.out.println("Массив не нуждается в сортировке, так как содержит 1 эллемент");
+            System.out.println("Массив не нуждается в сортировке, так как содержит 1 элемент");
         } else {
             for(int i = 0; i < arr.length - 1; ++i) {
                 for(int k = 0; k < arr.length - i - 1; ++k) {
