@@ -10,7 +10,7 @@ public class Sort {
     }
     public static void sorting(int[] arr) {
         if(arr.length == 0){
-            System.out.println("Массив не содержит элементы");
+            System.out.println("Массив не содержит элементов");
         }
         else if(arr.length == 1){
             System.out.println("Массив не нуждается в сортировке, так как содержит 1 значение");
