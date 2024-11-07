@@ -14,6 +14,7 @@ public class SortArrays {
            for (int i = 0; i < howMatchElements; i++){
                arr[i] = scanner.nextInt();
            }
+           scanner.close();
         long startTime = System.nanoTime();
         sortArr(arr);
         for(int i = 0; i < howMatchElements; ++i) {
