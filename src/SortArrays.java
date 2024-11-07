@@ -1,11 +1,23 @@
+import org.w3c.dom.ls.LSOutput;
+
+import java.util.Scanner;
+
 public class SortArrays {
        public static void main(String[] args) {
-        int[] arrayTask = new int[]{12, 3, 2, 5, 7, 21, 3, 4, 9, 24};
+//        int[] arrayTask = new int[]{12, 3, 2, 5, 7, 21, 3, 4, 9, 24};
+           Scanner scanner = new Scanner(System.in);
 
+           System.out.println("Сколько чисел хотите отсортировать?");
+           int howMatchElements = scanner.nextInt();
+           int[] arr = new int[howMatchElements];
+           System.out.println("Введите " + howMatchElements + " чисел");
+           for (int i = 0; i < howMatchElements; i++){
+               arr[i] = scanner.nextInt();
+           }
         long startTime = System.nanoTime();
-        sortArr(arrayTask);
-        for(int i = 0; i < arrayTask.length - 1; ++i) {
-            System.out.println(arrayTask[i]);
+        sortArr(arr);
+        for(int i = 0; i < howMatchElements; ++i) {
+            System.out.println(arr[i]);
         }
         long endTime = System.nanoTime();
         long timeElapsed = endTime - startTime;
