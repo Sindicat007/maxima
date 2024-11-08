@@ -8,23 +8,23 @@ public class Calc {
         System.out.println("Введите второе число: ");
         int secondVal = scanner.nextInt();
         System.out.println("Введите тип операции: ");
-        String operation = scanner.nextLine();
+        char operation = scanner.next().charAt(0);
         calcValue(firstVal, secondVal, operation);
     }
-    public static void calcValue(int a, int b, String c) {
+    public static void calcValue(int a, int b, char c) {
         int result;
         switch (c) {
-            case ("+"):
+            case ('+'):
                 result = a + b;
                 System.out.println(result);
                 break;
-            case ("-"):
+            case ('-'):
                 result = a - b;
                 System.out.println(result);
-            case ("*"):
+            case ('*'):
                 result = a * b;
                 System.out.println(result);
-            case ("/"):
+            case ('/'):
                 if (b == 0){
                     System.out.println("На ноль денлить нельзя");
                 }
