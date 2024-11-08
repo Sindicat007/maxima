@@ -33,15 +33,14 @@ public class Calc {
                 System.out.println(result);
                 break;
             case ('/'):
-                if (b == 0){
-                    System.out.println("На ноль делить нельзя");
-                    break;
+                if (b != 0){
+                    double resultDiv = (double)a / (double)b;
+                    System.out.println(resultDiv);
                 }
                 else {
-                   double resultDiv = (double)a / (double)b;
-                    System.out.println(resultDiv);
-                    break;
+                    System.out.println("На ноль делить нельзя");
                 }
+                break;
         }
     }
 }
