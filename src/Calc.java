@@ -17,6 +17,7 @@ public class Calc {
 
         scanner.close();
     }
+
     public static void calcValue(int a, int b, char c) {
         int result;
         switch (c) {
@@ -33,11 +34,10 @@ public class Calc {
                 System.out.println(result);
                 break;
             case ('/'):
-                if (b != 0){
-                    double resultDiv = (double)a / (double)b;
+                if (b != 0) {
+                    double resultDiv = (double) a / (double) b;
                     System.out.println(resultDiv);
-                }
-                else {
+                } else {
                     System.out.println("На ноль делить нельзя");
                 }
                 break;

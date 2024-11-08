@@ -5,13 +5,11 @@ public class While {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Для подсчета суммы, введите поочередно несколько четных чисел");
         int res = 0;
-        while (true){
+        while (true) {
             int var = scanner.nextInt();
             if (var % 2 == 0) {
                 res += var;
-            }
-
-            else {
+            } else {
                 System.out.println("Сумма введеных четных чисел: " + res);
                 break;
             }
