@@ -7,12 +7,13 @@ public class Calc {
         int firstVal = scanner.nextInt();
         System.out.println("Введите второе число: ");
         int secondVal = scanner.nextInt();
-        System.out.println("Введите тип операции: ");
+        System.out.println("Введите тип операции (+, -, *, /): ");
         char operation = scanner.next().charAt(0);
         calcValue(firstVal, secondVal, operation);
+        scanner.close();
     }
     public static void calcValue(int a, int b, char c) {
-        int result;
+        int result = 0;
         switch (c) {
             case ('+'):
                 result = a + b;
@@ -21,16 +22,20 @@ public class Calc {
             case ('-'):
                 result = a - b;
                 System.out.println(result);
+                break;
             case ('*'):
                 result = a * b;
                 System.out.println(result);
+                break;
             case ('/'):
                 if (b == 0){
-                    System.out.println("На ноль денлить нельзя");
+                    System.out.println("На ноль делить нельзя");
+                    break;
                 }
                 else {
-                    result = a / b;
-                    System.out.println(result);
+                   double resultDiv = (double)a / (double)b;
+                    System.out.println(resultDiv);
+                    break;
                 }
         }
     }
