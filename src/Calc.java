@@ -18,7 +18,7 @@ public class Calc {
         scanner.close();
     }
     public static void calcValue(int a, int b, char c) {
-        int result = 0;
+        int result;
         switch (c) {
             case ('+'):
                 result = a + b;
