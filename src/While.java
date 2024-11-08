@@ -12,7 +12,7 @@ public class While {
             }
 
             else {
-                System.out.println("Сумма введеных чисел: " + res);
+                System.out.println("Сумма введеных четных чисел: " + res);
                 break;
             }
         }
