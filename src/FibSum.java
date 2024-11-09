@@ -1,6 +1,11 @@
+import java.util.Scanner;
+
 public class FibSum {
     public static void main(String[] args) {
-        System.out.println(fibRec(6));
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Расчеты числа Фибоначчи по его порядковому номеру. \n" + "Введите порядковый номер числа: ");
+        int num = scan.nextInt();
+        System.out.println(fibRec(num));
     }
 
     public static int fibFor(int a) {
@@ -15,7 +20,7 @@ public class FibSum {
         return result;
     }
 
-    public static int fibRec(int a) {
+    public static long fibRec(int a) {
         if (a <= 1) return a;
         return fibRec(a - 1) + fibRec(a - 2);
     }
