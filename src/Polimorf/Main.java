@@ -12,7 +12,7 @@ public class Main {
     }
 
     public static void workAndSalary(Employee[] employees) {
-        for (Employee item: employees){
+        for (Employee item : employees) {
             item.work();
             System.out.println("Зарплата: " + item.getSalary());
             System.out.println();

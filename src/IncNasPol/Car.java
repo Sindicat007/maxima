@@ -1,6 +1,6 @@
 package IncNasPol;
 
-public class Car extends MotorTransport{
+public class Car extends MotorTransport {
     private String brandCar;
     private String modelCar;
 
@@ -25,6 +25,7 @@ public class Car extends MotorTransport{
     public void setModelCar(String modelCar) {
         this.modelCar = modelCar;
     }
+
     @Override
     public void service() {
         System.out.println("Обслужен автомобиль: " + brandCar + " " + modelCar);
