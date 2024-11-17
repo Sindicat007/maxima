@@ -1,3 +1,5 @@
+package Cycle;
+
 import java.util.Scanner;
 
 public class Calc {
