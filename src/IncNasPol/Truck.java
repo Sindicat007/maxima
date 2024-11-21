@@ -16,6 +16,10 @@ public class Truck extends MotorTransport {
         this.loadCapacity = loadCapacity;
     }
 
+    public final void unloading() {
+        System.out.println("Разгрузиться");
+    }
+
     @Override
     public void service() {
         System.out.println("Грузоподьемность: " + loadCapacity);

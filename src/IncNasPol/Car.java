@@ -26,6 +26,10 @@ public class Car extends MotorTransport {
         this.modelCar = modelCar;
     }
 
+    public final void driftCar() {
+        System.out.println("Дать угла");
+    }
+
     @Override
     public void service() {
         System.out.println("Обслужен автомобиль: " + brandCar + " " + modelCar);
