@@ -13,6 +13,8 @@ public class Main {
                 ((Car) vehicle).playMusic();
             } else if (vehicle instanceof Truck) {
                 ((Truck) vehicle).loadCargo();
+            } else {
+                System.out.println("Такого транспортного средства пока нет");
             }
         }
     }
