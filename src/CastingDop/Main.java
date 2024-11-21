@@ -9,10 +9,10 @@ public class Main {
     public static void vehicleProceed(Vehicle[] vehicles) {
         for (Vehicle vehicle : vehicles) {
             vehicle.drive();
-            if (vehicle instanceof Car) {
-                ((Car) vehicle).playMusic();
-            } else if (vehicle instanceof Truck) {
-                ((Truck) vehicle).loadCargo();
+            if (vehicle instanceof Car car) {
+                car.playMusic();
+            } else if (vehicle instanceof Truck truck) {
+                truck.loadCargo();
             } else {
                 System.out.println("Такого транспортного средства пока нет");
             }

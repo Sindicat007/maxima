@@ -3,12 +3,12 @@ package Casting;
 public class Service {
     public void process(Shape[] shapes) {
         for (Shape val : shapes) {
-            if (val instanceof Circle) {
+            if (val instanceof Circle circle) {
                 val.draw();
-                ((Circle) val).calculateArea();
-            } else if (val instanceof Rectangle) {
+                circle.calculateArea();
+            } else if (val instanceof Rectangle rectangle) {
                 val.draw();
-                ((Rectangle) val).calculateArea();
+                rectangle.calculateArea();
             } else {
                 System.out.println("Что-то пошло не так");
             }
