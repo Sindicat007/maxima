@@ -1,7 +1,7 @@
 package Casting;
 
 public class Service {
-    public void process(Shape[] shapes) {
+    public static void process(Shape[] shapes) {
         for (Shape val : shapes) {
             if (val instanceof Circle circle) {
                 val.draw();
@@ -10,7 +10,7 @@ public class Service {
                 val.draw();
                 rectangle.calculateArea();
             } else {
-                System.out.println("Что-то пошло не так");
+                System.out.println("Обработка заданной формы еще не реализована");
             }
         }
     }

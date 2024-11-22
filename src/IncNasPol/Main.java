@@ -1,6 +1,5 @@
 package IncNasPol;
 
-import java.text.Format;
 import java.util.Scanner;
 
 public class Main {
@@ -25,25 +24,24 @@ public class Main {
             Truck truckClient = new Truck(150, 8, "Дизель", 11000);
             visitServiceStation(truckClient);
         } else {
-            System.out.println("Такого вида пока не существует, попробуйте снова");
+            System.out.println("Данный тип транспорта пока не обслуживается, попробуйте выбрать из списка выше");
         }
 
     }
 
     public static void visitServiceStation(WheeledTransport typeTransport) {
         System.out.println("Визит в сервис\n--------------");
-        if (typeTransport instanceof Bicycle) {
-            Bicycle bicycle = (Bicycle) typeTransport;
+        if (typeTransport instanceof Bicycle bicycle) {
             bicycle.service();
             bicycle.jump();
-        } else if (typeTransport instanceof Car) {
-            Car car = (Car) typeTransport;
+        } else if (typeTransport instanceof Car car) {
             car.service();
             car.driftCar();
-        } else {
-            Truck truck = (Truck) typeTransport;
+        } else if (typeTransport instanceof Truck truck) {
             truck.service();
             truck.unloading();
+        } else {
+            System.out.println("Данный тип транспорта веременно не обслуживается");
         }
     }
 }
