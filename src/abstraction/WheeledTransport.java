@@ -1,6 +1,6 @@
 package abstraction;
 
-public abstract class WheeledTransport implements Transport{
+public abstract class WheeledTransport implements Transport {
     private int maxSpeed;
     private int amountWheels;
 
