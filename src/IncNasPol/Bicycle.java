@@ -16,6 +16,10 @@ public class Bicycle extends WheeledTransport {
         this.typeBicycle = typeBicycle;
     }
 
+    public final void jump() {
+        System.out.println("Прыжок");
+    }
+
     @Override
     public void service() {
         System.out.println("Обслужен велоспиед типа: " + typeBicycle);
