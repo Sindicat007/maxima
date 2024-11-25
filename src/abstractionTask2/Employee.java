@@ -8,5 +8,4 @@ public abstract class Employee implements Payable {
         return name;
     }
 
-//    public abstract double calculatePayment();
 }
