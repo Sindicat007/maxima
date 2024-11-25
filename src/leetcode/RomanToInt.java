@@ -28,20 +28,26 @@ public class RomanToInt {
                         case "V", "X" -> {
                             if (String.valueOf(chars[i - 1]).equalsIgnoreCase("I")) {
                                 sum += (romanValues.get(buf) - 1);
+                            } else {
+                                sum += romanValues.get(buf);
                             }
                         }
                         case "L", "C" -> {
                             if (String.valueOf(chars[i - 1]).equalsIgnoreCase("X")) {
                                 sum += (romanValues.get(buf) - 10);
+                            } else {
+                                sum += romanValues.get(buf);
                             }
                         }
                         case "D", "M" -> {
                             if (String.valueOf(chars[i - 1]).equalsIgnoreCase("C")) {
                                 sum += (romanValues.get(buf) - 100);
+                            } else {
+                                sum += romanValues.get(buf);
                             }
                         }
                         default -> {
-                                sum += romanValues.get(buf);
+                            sum += romanValues.get(buf);
                         }
                     }
                 } else {
