@@ -4,9 +4,17 @@ import java.util.HashMap;
 
 public class RomanToInt {
     public static void main(String[] args) {
-        System.out.println(romanToInt("LVIII"));
+        System.out.println(romanToInt("XVIIi"));
+        System.out.println(romanToInt("IV"));
+        System.out.println(romanToInt("MCMXCIV"));
 
     }
+
+
+//    I can be placed before V (5) and X (10) to make 4 and 9.
+//    X can be placed before L (50) and C (100) to make 40 and 90.
+//    C can be placed before D (500) and M (1000) to make 400 and 900.
+
 
     public static int romanToInt(String s) {
         char[] chars = s.toCharArray();
@@ -21,27 +29,32 @@ public class RomanToInt {
         romanValues.put("M", 1000);
 
         for (int i = 0; i < chars.length; i++) {
+
             String buf = String.valueOf(chars[i]).toUpperCase();
             if (romanValues.containsKey(buf)) {
-                if (i != 0) {
+                if (i + 1 < chars.length) {
+
                     switch (buf) {
-                        case "V", "X" -> {
-                            if (String.valueOf(chars[i - 1]).equalsIgnoreCase("I")) {
-                                sum += (romanValues.get(buf) - 1);
+                        case "I" -> {
+                            if (String.valueOf(chars[i + 1]).equalsIgnoreCase("V") || String.valueOf(chars[i + 1]).equalsIgnoreCase("X")) {
+                                sum += (romanValues.get(String.valueOf(chars[i + 1])) - romanValues.get(buf));
+                                i++;
                             } else {
                                 sum += romanValues.get(buf);
                             }
                         }
-                        case "L", "C" -> {
-                            if (String.valueOf(chars[i - 1]).equalsIgnoreCase("X")) {
-                                sum += (romanValues.get(buf) - 10);
+                        case "X" -> {
+                            if (String.valueOf(chars[i + 1]).equalsIgnoreCase("L") || String.valueOf(chars[i + 1]).equalsIgnoreCase("C")) {
+                                sum += (romanValues.get(String.valueOf(chars[i + 1])) - romanValues.get(buf));
+                                i++;
                             } else {
                                 sum += romanValues.get(buf);
                             }
                         }
-                        case "D", "M" -> {
-                            if (String.valueOf(chars[i - 1]).equalsIgnoreCase("C")) {
-                                sum += (romanValues.get(buf) - 100);
+                        case "C" -> {
+                            if (String.valueOf(chars[i + 1]).equalsIgnoreCase("D") || String.valueOf(chars[i + 1]).equalsIgnoreCase("M")) {
+                                sum += (romanValues.get(String.valueOf(chars[i + 1])) - romanValues.get(buf));
+                                i++;
                             } else {
                                 sum += romanValues.get(buf);
                             }
