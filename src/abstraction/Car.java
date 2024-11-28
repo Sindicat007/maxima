@@ -1,7 +1,7 @@
 package abstraction;
 
 public class Car extends MotorTransport {
-    private String brandCar;
+    private final String brandCar;
     private String modelCar;
 
     public Car(int maxSpeed, int amountWheels, String typeEngine, String brandCar, String modelCar) {

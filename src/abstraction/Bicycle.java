@@ -1,7 +1,7 @@
 package abstraction;
 
 public class Bicycle extends WheeledTransport {
-    private String typeBicycle;
+    private final String typeBicycle;
 
     public Bicycle(int maxSpeed, int amountWheels, String typeBicycle) {
         super(maxSpeed, amountWheels);
