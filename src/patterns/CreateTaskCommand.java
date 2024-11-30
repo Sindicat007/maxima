@@ -1,20 +1,27 @@
 package patterns;
 
-//Concrete Command
 public class CreateTaskCommand implements Command {
-    private TaskManager taskManager;
+    private Task task;
+    private Command noCommand;
 
-    public CreateTaskCommand(TaskManager taskManager) {
-        this.taskManager = taskManager;
+    public CreateTaskCommand(Task task) {
+        this.task = task;
     }
 
+    @Override
     public void execute() {
-        taskManager.createTask();
+        task.createTask();
     }
 
-
+    @Override
     public void undo() {
-        taskManager.deleteTask();
-        System.out.println("Отменить задание");
+        task.deleteTask();
+//        noCommand.execute();
+//        task.deleteTask(task.getId().toString());
     }
+
+//    @Override
+//    public void redo(String description) {
+//        task.redoTask(description);
+//    }
 }

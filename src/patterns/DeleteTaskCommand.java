@@ -1,19 +1,24 @@
 package patterns;
 
-//Concrete Command
 public class DeleteTaskCommand implements Command {
-    private TaskManager taskManager;
+    private Task task;
 
-    public DeleteTaskCommand(TaskManager taskManager) {
-        this.taskManager = taskManager;
+    public DeleteTaskCommand(Task task) {
+        this.task = task;
     }
 
+    @Override
     public void execute() {
-        taskManager.deleteTask();
+        task.deleteTask();
+    }
+
+    @Override
+    public void undo() {
+        task.createTask();
     }
 
 //    @Override
-//    public void undo() {
-//
+//    public void redo(String id) {
+//        NoCommand noCommand;
 //    }
 }

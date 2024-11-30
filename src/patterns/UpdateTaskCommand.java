@@ -2,18 +2,28 @@ package patterns;
 
 //Concrete Command
 public class UpdateTaskCommand implements Command {
-    private TaskManager taskManager;
+    private Task task;
+    String prevDescription;
 
-    public UpdateTaskCommand(TaskManager taskManager) {
-        this.taskManager = taskManager;
+    public UpdateTaskCommand(Task task) {
+        this.task = task;
     }
 
+    @Override
     public void execute() {
-        taskManager.updateTask();
+        prevDescription = task.getDescription();
+        task.updateTask(prevDescription);
+    }
+
+    @Override
+    public void undo() {
+        if (prevDescription != null && !prevDescription.equals(task.getDescription())) {
+            task.setDescription(prevDescription);
+        }
     }
 
 //    @Override
-//    public void undo() {
-//
+//    public void redo(String description) {
+//       task.setDescription(description);
 //    }
 }
