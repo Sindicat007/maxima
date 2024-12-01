@@ -1,18 +1,13 @@
 package patternComandFinal;
 
 public class Invoker {
-    private Command command, undoCommand;
+    private Command command;
 
-    public void setCommand(Command command) {
-        this.command = command;
-    }
-
-    public void executeCommand() {
-        undoCommand = command;
+    public void executeCommand(Command command) {
         command.execute();
     }
 
-    public void undoCommand() {
-        undoCommand.undo();
+    public void undoCommand(Command command) {
+        command.undo();
     }
 }

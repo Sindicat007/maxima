@@ -1,27 +1,21 @@
 package patternComandFinal;
 
 public class DeleteTaskCommand implements Command {
-    private Task[] task;
-    private int id;
-    private int lastId;
-    private String description;
-    private Task noCommand;
+    private Task task;
+    private TaskManager taskManager;
 
-    public DeleteTaskCommand(Task[] task, int id) {
+    public DeleteTaskCommand(TaskManager taskManager, Task task) {
+        this.taskManager = taskManager;
         this.task = task;
-        this.id = id;
     }
 
     @Override
     public void execute() {
-        lastId = id;
-        description = task[id].getDescription();
-        task[id] = noCommand;
+        taskManager.deleteTask(task);
     }
 
     @Override
     public void undo() {
-        task[lastId] = new Task(lastId + 1, description);
-//        task[lastId].setDescription(description);
+        taskManager.addTask(task);
     }
 }

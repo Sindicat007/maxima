@@ -1,25 +1,24 @@
 package patternComandFinal;
 
 public class UpdateTaskCommand implements Command {
-    private Task[] task;
-    private String description;
-    private String lastDescription;
-    private int id;
+    private TaskManager taskManager;
+    private Task task;
+    private String updateDescription, lastDesc;
 
-    public UpdateTaskCommand(Task[] task, String description, int id) {
+    public UpdateTaskCommand(TaskManager taskManager, Task task, String updateDescription) {
+        this.taskManager = taskManager;
         this.task = task;
-        this.description = description;
-        this.id = id;
+        this.updateDescription = updateDescription;
     }
 
     @Override
     public void execute() {
-        lastDescription = task[id].getDescription();
-        task[id].setDescription(description);
+        lastDesc = task.getDescription();
+        taskManager.updateTask(task, updateDescription);
     }
 
     @Override
     public void undo() {
-        task[id].setDescription(lastDescription);
+        taskManager.updateTask(task, lastDesc);
     }
 }
