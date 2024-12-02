@@ -4,19 +4,19 @@ import java.util.Arrays;
 
 public class Invoker {
     private Command command;
-    private final Command[] commands = new Command[10];
+    private final Command[] commands = new Command[5];
     private static int commandPointer = 0;
 
     public void executeCommand(Command command) {
         command.execute();
         commands[commandPointer] = command;
-        commandPointer++;
+        commandPointer = commandPointer < commands.length - 1 ? commandPointer + 1 : commandPointer;
     }
 
     public void undoCommand(Command command) {
         command.undo();
         commands[commandPointer] = command;
-        commandPointer++;
+        commandPointer = commandPointer < commands.length - 1 ? commandPointer + 1 : commandPointer;
     }
 
     @Override
@@ -32,6 +32,6 @@ public class Invoker {
                     .append("\n");
             }
         }
-        return String.format("Последние %d выполненых команд %n%s%n", commandPointer, sb );
+        return String.format("Последние %d выполненых команд %n%s%n", commandPointer + 1, sb );
     }
 }
