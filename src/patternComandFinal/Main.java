@@ -9,18 +9,15 @@ public class Main {
 
         CreateTaskCommand createTask = new CreateTaskCommand(taskManager, task1);
         invoker.executeCommand(createTask);
-        taskManager.printTasks();
+        invoker.executeCommand(createTask);
 
         DeleteTaskCommand deleteTask = new DeleteTaskCommand(taskManager, task1);
         invoker.executeCommand(deleteTask);
-        taskManager.printTasks();
         invoker.undoCommand(deleteTask);
-        taskManager.printTasks();
 
         UpdateTaskCommand updateTask = new UpdateTaskCommand(taskManager, task1, "Задание выполнено");
         invoker.executeCommand(updateTask);
-        taskManager.printTasks();
-        invoker.undoCommand(updateTask);
+//        invoker.undoCommand(updateTask);
 
         taskManager.printTasks();
     }
