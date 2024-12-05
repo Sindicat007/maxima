@@ -2,7 +2,7 @@ package javaIO;
 
 public class CalcDev {
     public static void main(String[] args) {
-        devide(5,0);
+        devide(5, 0);
 
     }
 
@@ -10,10 +10,9 @@ public class CalcDev {
         try {
             return a / b;
         } catch (ArithmeticException e) {
-            System.out.println("Делить на ноль нельзя " + e.getMessage());
+            System.out.println("Ошибка. Делить на ноль нельзя: " + e.getMessage());
             return 0;
-        }
-        finally {
+        } finally {
             System.out.println("Операция деление завершилась.");
         }
     }
