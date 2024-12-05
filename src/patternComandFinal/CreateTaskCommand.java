@@ -17,6 +17,15 @@ public class CreateTaskCommand implements Command {
     @Override
     public void undo() {
         taskManager.deleteTask(task);
+    }
 
+    @Override
+    public void redo() {
+        execute();
+    }
+
+    @Override
+    public String getDescription() {
+        return task.getDescription();
     }
 }

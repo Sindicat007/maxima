@@ -3,22 +3,29 @@ package patternComandFinal;
 public class UpdateTaskCommand implements Command {
     private TaskManager taskManager;
     private Task task;
-    private String updateDescription, lastDesc;
 
-    public UpdateTaskCommand(TaskManager taskManager, Task task, String updateDescription) {
+    public UpdateTaskCommand(TaskManager taskManager, Task task) {
         this.taskManager = taskManager;
         this.task = task;
-        this.updateDescription = updateDescription;
     }
 
     @Override
     public void execute() {
-        lastDesc = task.getDescription();
-        taskManager.updateTask(task, updateDescription);
+        taskManager.updateTask(task);
     }
 
     @Override
     public void undo() {
-        taskManager.updateTask(task, lastDesc);
+        taskManager.revertUpdate(task);
+    }
+
+    @Override
+    public void redo() {
+
+    }
+
+    @Override
+    public String getDescription() {
+        return task.getDescription();
     }
 }

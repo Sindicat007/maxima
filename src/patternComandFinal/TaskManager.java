@@ -2,6 +2,7 @@ package patternComandFinal;
 
 public class TaskManager {
     private Task[] tasks = new Task[1];
+    private Task[] historyUpdate = new Task[10];
 
     public void addTask(Task task) {
         for (int i = 0; i < tasks.length; i++) {
@@ -14,6 +15,7 @@ public class TaskManager {
                 return;
             }
         }
+        //TODO: добавить обновление в историю
     }
 
     public void deleteTask(Task task) {
@@ -26,10 +28,26 @@ public class TaskManager {
         System.out.println("Такой задачи нет");
     }
 
-    public void updateTask(Task task, String updateDescription) {
+    public void updateTask(Task newTask) {
+        for (Task value : tasks) {
+            if (value != null && value.equals(newTask)) {
+                value.setDescription(newTask.getDescription());
+            }
+        }
+        //TODO: добавить обновление в историю
+    }
+
+    public void revertUpdate(Task task) {
+        String oldDescription = "";
+        for (int i = historyUpdate.length - 1; i >= 0; i--) {
+            if(historyUpdate[i] != null && historyUpdate[i].equals(task)) {
+                oldDescription = historyUpdate[i].getDescription();
+            }
+        }
+
         for (Task value : tasks) {
             if (value != null && value.equals(task)) {
-                value.setDescription(updateDescription);
+                value.setDescription(oldDescription);
             }
         }
     }
@@ -39,9 +57,10 @@ public class TaskManager {
         for (int i = 0; i < tasks.length; i++) {
             if (tasks[i] != null) {
                 String res = String.format("Задача № %d \"%s\" с id: %d%n", i + 1, tasks[i].getDescription(), tasks[i].getId());
-                System.out.println(res);
+                System.out.print(res);
             }
         }
+        System.out.println();
     }
 
     public void increaseTasksArray(Task[] tasks) {
