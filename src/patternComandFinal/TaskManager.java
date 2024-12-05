@@ -17,8 +17,8 @@ public class TaskManager {
     }
 
     public void deleteTask(Task task) {
-        for (int i = 0; i < tasks.length; i++) {
-            if (tasks[i].getId() == task.getId()) {
+        for (int i = tasks.length - 1; i >= 0; i--) {
+            if (tasks[i] != null && tasks[i].getId() == task.getId()) {
                 tasks[i] = null;
                 return;
             }
@@ -45,7 +45,7 @@ public class TaskManager {
     }
 
     public void increaseTasksArray(Task[] tasks) {
-        Task[] newTasks = new Task[tasks.length + 1];
+        Task[] newTasks = new Task[tasks.length * 2];
         System.arraycopy(tasks, 0, newTasks, 0, tasks.length);
         this.tasks = newTasks;
     }

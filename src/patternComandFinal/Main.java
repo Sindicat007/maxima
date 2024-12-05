@@ -1,6 +1,5 @@
 package patternComandFinal;
 
-import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,7 +11,11 @@ public class Main {
         CreateTaskCommand createTask = new CreateTaskCommand(taskManager, task1);
         invoker.executeCommand(createTask);
         invoker.executeCommand(createTask);
-        createTask.execute();
+        invoker.executeCommand(createTask);
+        invoker.executeCommand(createTask);
+        invoker.undoCommand(createTask);
+        invoker.undoCommand(createTask);
+        invoker.undoCommand(createTask);
 
         DeleteTaskCommand deleteTask = new DeleteTaskCommand(taskManager, task1);
         invoker.executeCommand(deleteTask);
