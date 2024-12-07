@@ -1,8 +1,10 @@
 package patternComandFinal;
 
+import org.jetbrains.annotations.NotNull;
+
 public class TaskManager {
     private Task[] tasks = new Task[1];
-    private Task[] historyUpdate = new Task[10];
+    private Task[] historyUpdate = new Task[1];
 
     public void addTask(Task task) {
         for (int i = 0; i < tasks.length; i++) {
@@ -10,12 +12,15 @@ public class TaskManager {
                 tasks[i] = task;
                 return;
             } else if (i == tasks.length - 1 && tasks[i] != null) {
-                increaseTasksArray(tasks);
+                tasks = increaseTasksArray(tasks);
                 tasks[tasks.length - 1] = task;
                 return;
             }
         }
-        //TODO: добавить обновление в историю
+        if (task.getId() >= historyUpdate.length) {
+            historyUpdate = increaseTasksArray(historyUpdate);
+        }
+        historyUpdate[task.getId()] = task;
     }
 
     public void deleteTask(Task task) {
@@ -31,20 +36,22 @@ public class TaskManager {
     public void updateTask(Task newTask) {
         for (Task value : tasks) {
             if (value != null && value.equals(newTask)) {
+                if (value.getId() >= historyUpdate.length) {
+                    historyUpdate = increaseTasksArray(historyUpdate);
+                }
+                historyUpdate[value.getId()] = value;
                 value.setDescription(newTask.getDescription());
             }
         }
-        //TODO: добавить обновление в историю
     }
 
     public void revertUpdate(Task task) {
         String oldDescription = "";
         for (int i = historyUpdate.length - 1; i >= 0; i--) {
-            if(historyUpdate[i] != null && historyUpdate[i].equals(task)) {
+            if (historyUpdate[i] != null && historyUpdate[i].equals(task)) {
                 oldDescription = historyUpdate[i].getDescription();
             }
         }
-
         for (Task value : tasks) {
             if (value != null && value.equals(task)) {
                 value.setDescription(oldDescription);
@@ -63,9 +70,9 @@ public class TaskManager {
         System.out.println();
     }
 
-    public void increaseTasksArray(Task[] tasks) {
+    public Task[] increaseTasksArray(Task @NotNull [] tasks) {
         Task[] newTasks = new Task[tasks.length * 2];
         System.arraycopy(tasks, 0, newTasks, 0, tasks.length);
-        this.tasks = newTasks;
+        return newTasks;
     }
 }

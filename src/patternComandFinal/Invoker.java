@@ -2,7 +2,7 @@ package patternComandFinal;
 
 public class Invoker {
     private Command[] history = new Command[5];
-    private static int commandPointer = 0;
+    private int commandPointer = 0;
 
     public void executeCommand(Command command) {
         command.execute();
@@ -16,9 +16,9 @@ public class Invoker {
         increaseCommandsArrayAndPointer(history);
     }
 
-    public void redo(CreateTaskCommand flowerCommand) {
-        flowerCommand.redo();
-        history[commandPointer] = flowerCommand;
+    public void redo(Command command) {
+        command.redo();
+        history[commandPointer] = command;
         increaseCommandsArrayAndPointer(history);
     }
 

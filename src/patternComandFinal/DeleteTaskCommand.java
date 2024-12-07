@@ -1,8 +1,8 @@
 package patternComandFinal;
 
 public class DeleteTaskCommand implements Command {
-    private Task task;
-    private TaskManager taskManager;
+    private final Task task;
+    private final TaskManager taskManager;
 
     public DeleteTaskCommand(TaskManager taskManager, Task task) {
         this.taskManager = taskManager;
@@ -21,7 +21,7 @@ public class DeleteTaskCommand implements Command {
 
     @Override
     public void redo() {
-
+        execute();
     }
 
     @Override

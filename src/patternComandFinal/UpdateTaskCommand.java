@@ -1,8 +1,8 @@
 package patternComandFinal;
 
 public class UpdateTaskCommand implements Command {
-    private TaskManager taskManager;
-    private Task task;
+    private final TaskManager taskManager;
+    private final Task task;
 
     public UpdateTaskCommand(TaskManager taskManager, Task task) {
         this.taskManager = taskManager;
@@ -21,7 +21,7 @@ public class UpdateTaskCommand implements Command {
 
     @Override
     public void redo() {
-
+        execute();
     }
 
     @Override
