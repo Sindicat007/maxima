@@ -24,12 +24,12 @@ public class Storage<T> {
         this.store = new LinkedList<>();
     }
 
-    void add(T item) {
+    public void add(T item) {
         store.add(item);
 
     }
 
-    T get(int index) {
+    public T get(int index) {
         try {
             return store.get(index);
         } catch (Exception e) {
@@ -38,7 +38,7 @@ public class Storage<T> {
         }
     }
 
-    int size() {
+    public int size() {
         return store.size();
     }
 
