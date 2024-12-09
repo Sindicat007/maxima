@@ -16,7 +16,7 @@ target/
 /android/libs/x86_64/
 /android/gen/
 .idea/
-.gigaide
+.gigaide/
 *.ipr
 *.iws
 *.iml
@@ -93,11 +93,3 @@ nb-configuration.xml
 
 /local.properties
 .gradle/
-gradle-app.setting
-/build/
-/android/build/
-/core/build/
-/desktop/build/
-/html/build/
-/ios/build/
-/ios-moe/build/

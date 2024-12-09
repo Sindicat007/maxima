@@ -3,7 +3,7 @@ package javaIO;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class inputError {
+public class InputError {
     public static void main(String[] args) {
         boolean isNum = false;
         try (Scanner sc = new Scanner(System.in)) {
