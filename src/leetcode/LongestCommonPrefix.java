@@ -9,15 +9,14 @@ public class LongestCommonPrefix {
         if (str == null || str.length < 1) {
             return "";
         }
-        String prefix = str[0];
-        for (int i = 1; i < str.length; i++) {
-            while (str[i].indexOf(prefix) != 0) {
-                prefix = prefix.substring(0, prefix.length() - 1);
-                if (prefix.isEmpty()) {
-                    return "";
-                }
+        String buf = str[0];
+
+        for (String s : str) {
+            while (s.indexOf(buf) != 0) {
+                buf = buf.substring(0, buf.length() - 1);
+                if (buf.isEmpty()) return "";
             }
         }
-        return prefix;
+        return buf;
     }
 }
