@@ -8,7 +8,7 @@ public class RomanToInt2 {
 
     public static int romanToInt(String s) {
         int ans = 0, num = 0;
-        for(int i=s.length()-1;i>=0;i--){
+        for (int i = s.length() - 1; i >= 0; i--) {
             char ch = s.toUpperCase().charAt(i);
             num = switch (ch) {
                 case 'I' -> 1;
@@ -20,10 +20,10 @@ public class RomanToInt2 {
                 case 'M' -> 1000;
                 default -> num;
             };
-            if(4*num<ans)
-                ans-=num;
+            if (4 * num < ans)
+                ans -= num;
             else
-                ans+=num;
+                ans += num;
         }
         return ans;
     }
