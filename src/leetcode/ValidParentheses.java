@@ -3,26 +3,28 @@ package leetcode;
 
 public class ValidParentheses {
     public static void main(String[] args) {
-        String c = "[(])";
+        String c = "(())";
         System.out.println(isValid(c));
     }
 
     public static boolean isValid(String s) {
-        int buf = 0;
-        int count = 0;
-        char[] c = s.toCharArray();
+        char[] history = new char[s.length()];
+        int count = -1;
 
-        for (int i = 0; i < s.length(); i++) {
-            buf = switch (c[i]) {
-                case '[' -> count += 1;
-                case '(' -> count += 2;
-                case '{' -> count += 3;
-                case ']' -> count -= 1;
-                case ')' -> count -= 2;
-                case '}' -> count -= 3;
-                default -> buf;
-            };
+        for (char val : s.toCharArray()) {
+            if (val == '(' || val == '[' || val == '{') {
+                history[++count] = val;
+            } else {
+                if (count == -1 ||
+                        val == ')' && history[count] != '(' ||
+                        val == ']' && history[count] != '[' ||
+                        val == '}' && history[count] != '{'
+                ) {
+                    return false;
+                }
+                count--;
+            }
         }
-        return count == 0;
+        return count == -1;
     }
 }
