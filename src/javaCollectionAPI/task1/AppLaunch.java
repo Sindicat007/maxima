@@ -4,30 +4,29 @@ import java.util.Scanner;
 
 public class AppLaunch {
     private boolean isWork = true;
-    String[] menuPhoneDirectory = {
-            "1. Добавить контакт",
-            "2. Найти номер телефона",
-            "3. Удалить контакт",
-            "4. Показать все контакты",
-            "5. Выйти"
-    };
+    String menuPhoneDirectory = """
+            1. Добавить контакт\s
+            2. Найти номер телефона\s
+            3. Удалить контакт\s
+            4. Показать все контакты\s
+            5. Выйти \s""";
 
     public void launcherPhoneBook(PhoneNumberDirectory phoneBook) {
         StringBuilder menu = new StringBuilder();
+        Scanner scanner = new Scanner(System.in);
         String val;
         String phone;
         String name;
-        String menuNumber;
-        Scanner scanner = new Scanner(System.in);
-        for (String s : menuPhoneDirectory) {
-            menu.append(s).append("\n");
-        }
+
+        System.out.println(menuPhoneDirectory);
         System.out.println("---------Телефонный справочник---------");
+
         while (isWork) {
             System.out.println(menu);
             System.out.println("Какое действие нужно выполнить?");
-            menuNumber = scanner.nextLine();
-            switch (menuNumber) {
+            val = scanner.nextLine();
+
+            switch (val) {
                 case "1" -> {
                     System.out.println("Введите имя");
                     name = scanner.nextLine();
