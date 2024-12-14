@@ -17,12 +17,10 @@ public class AppLaunch {
         String val;
         String phone;
         String name;
-
-        System.out.println(menuPhoneDirectory);
         System.out.println("---------Телефонный справочник---------");
 
         while (isWork) {
-            System.out.println(menu);
+            System.out.println(menuPhoneDirectory);
             System.out.println("Какое действие нужно выполнить?");
             val = scanner.nextLine();
 

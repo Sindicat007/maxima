@@ -8,7 +8,7 @@ public class PhoneNumberDirectory {
 
     public void addContactToPhoneBook(String name, String numberPhone) {
         if (!name.isEmpty() && !numberPhone.isEmpty()) {
-            name = name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase();
+            name = formatName(name);
             phoneBook.put(name, numberPhone);
             System.out.printf("Контакт с именем: '%s' и номером телефона: '%s' добавлен %n", name, numberPhone);
         } else {
@@ -17,7 +17,7 @@ public class PhoneNumberDirectory {
     }
 
     public String findContact(String name) {
-        name = name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase();
+        name = formatName(name);
         if (phoneBook.isEmpty() || !phoneBook.containsKey(name)) {
             return String.format("Контакта с именем %s нет в справочнике %n", name);
         }
@@ -28,8 +28,8 @@ public class PhoneNumberDirectory {
         if (value.isEmpty() && phoneBook.isEmpty()) {
             return "Список пользователей пуст либо запрашиваемое значение не задано\n";
         }
-        value = value.substring(0, 1).toUpperCase() + value.substring(1).toLowerCase();
         if (phoneBook.containsKey(value)) {
+            value = formatName(value);
             phoneBook.remove(value);
             return String.format("Контакт %s был удален %n", phoneBook.get(value));
         } else if (phoneBook.containsValue(value)) {
@@ -47,8 +47,7 @@ public class PhoneNumberDirectory {
         if (phoneBook.isEmpty()) {
             return "Телефонный справочник пуст\n";
         }
-        StringBuilder phoneNumbers;
-        phoneNumbers = new StringBuilder();
+        StringBuilder phoneNumbers = new StringBuilder();
         for (Map.Entry<String, String> phoneRecord : phoneBook.entrySet()) {
             phoneNumbers
                     .append(phoneRecord.getKey())
@@ -57,5 +56,9 @@ public class PhoneNumberDirectory {
                     .append("\n");
         }
         return String.format("Телефонный справочник %n%s", phoneNumbers);
+    }
+
+    public static String formatName(String name) {
+        return name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase();
     }
 }
