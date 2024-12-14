@@ -12,7 +12,6 @@ public class AppLaunch {
             5. Выйти \s""";
 
     public void launcherPhoneBook(PhoneNumberDirectory phoneBook) {
-        StringBuilder menu = new StringBuilder();
         Scanner scanner = new Scanner(System.in);
         String val;
         String phone;
