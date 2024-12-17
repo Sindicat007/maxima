@@ -2,7 +2,7 @@ package javaCollectionAPI.task1;
 
 import java.util.Scanner;
 
-public class AppLaunch {
+public class Launch {
     private boolean isWork = true;
     String menuPhoneDirectory = """
             1. Добавить контакт\s

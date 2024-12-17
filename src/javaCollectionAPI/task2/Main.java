@@ -15,7 +15,7 @@ public class Main {
         usersList.addUsers(rinat);
 
         System.out.println(usersList.getUsers());
-        NavigationUsersList navyLaunch = new NavigationUsersList();
+        Launch navyLaunch = new Launch();
         navyLaunch.navigationStart(usersList);
     }
 }

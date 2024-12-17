@@ -2,7 +2,7 @@ package javaCollectionAPI.task2;
 
 import java.util.Scanner;
 
-public class NavigationUsersList {
+public class Launch {
     Scanner scan;
     private boolean isWork = true;
     String menuListStr = """
