@@ -15,6 +15,7 @@ public class Main {
         task.getTaskList();
 
         task.moveTask(2,"top");
+        task.moveTask(2,"top");
         System.out.println();
         task.getTaskList();
     }

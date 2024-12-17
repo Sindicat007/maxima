@@ -54,19 +54,17 @@ public class TaskManager {
     LinkedList<String> list = new LinkedList<>();
 
     public void addTask(String task) {
-        if(!task.isEmpty()) {
+        if (!task.isEmpty()) {
             list.add(task);
-        }
-        else {
-            System.out.println("Чтоб добавить задачу введите хотя бы один символ");
+        } else {
+            System.out.println("Задача не может быть пустой");
         }
     }
 
     public void getTaskList() {
-        if(!list.isEmpty()) {
+        if (!list.isEmpty()) {
             list.forEach(System.out::println);
-        }
-        else {
+        } else {
             System.out.println("Список задач пуст");
         }
     }
@@ -74,8 +72,7 @@ public class TaskManager {
     public void deleteTask(int index) {
         if (index >= 0 && !list.isEmpty() && index < list.size()) {
             list.remove(index);
-        }
-        else {
+        } else {
             System.out.println("Ошибка удаления, проверьте вводимые данные, возможно такой задачи нет");
         }
     }
