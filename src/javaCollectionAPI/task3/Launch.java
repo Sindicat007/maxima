@@ -1,19 +1,5 @@
 package javaCollectionAPI.task3;
 
-/*
---- Учебный журнал ---
-
-1. Добавить студента
-
-2. Добавить оценку студенту
-
-3. Показать студентов и их средние оценки
-
-4. Выйти
-
-Выберите действие:
- */
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -66,5 +52,6 @@ public class Launch {
                 default -> System.out.println("Выбранное действие не предусмотрено, попробуйте снова.");
             }
         }
+        scan.close();
     }
 }

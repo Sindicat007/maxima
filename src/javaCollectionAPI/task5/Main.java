@@ -5,18 +5,15 @@ public class Main {
 
 
         TaskManager task = new TaskManager();
-        task.addTask("Go to job");
-        task.addTask("Go home");
-        task.addTask("Go gym");
+        Launch launch = new Launch();
+
+
         task.addTask("Go job");
+        task.addTask("Go gym");
+        task.addTask("Go home");
+        task.addTask("Go code");
 
-        task.deleteTask(5);
+        launch.taskManagerStart(task);
 
-        task.getTaskList();
-
-        task.moveTask(2,"top");
-        task.moveTask(2,"top");
-        System.out.println();
-        task.getTaskList();
     }
 }

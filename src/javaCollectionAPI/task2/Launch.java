@@ -29,5 +29,6 @@ public class Launch {
                 default -> System.out.println("Выбранное действие не предусмотрено, попробуйте снова.");
             }
         }
+        scan.close();
     }
 }
