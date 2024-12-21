@@ -5,7 +5,7 @@ public class Main {
 
         PhoneNumberDirectory phone = new PhoneNumberDirectory();
 
-        Launch launch = new Launch();
-        launch.launcherPhoneBook(phone);
+        Launcher launcher = new Launcher();
+        launcher.launch(phone);
     }
 }

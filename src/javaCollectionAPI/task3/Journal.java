@@ -25,9 +25,8 @@ import java.util.List;
 import java.util.Map;
 
 public class Journal {
-    public static final int MAX_GRADE = 5;
-    public static final int MIN_GRADE = 0;
-    Map<String, ArrayList<Integer>> students;
+
+    private final Map<String, ArrayList<Integer>> students;
 
     public Journal() {
         this.students = new HashMap<>();
@@ -36,25 +35,27 @@ public class Journal {
     public void addStudent(String name) {
         if (name.isEmpty()) {
             System.out.println("Имя студента не может быть пустым");
+            return;
         } else if (students.containsKey(name)) {
             System.out.printf("Студент с именем %s уже есть в списке %n", name);
-        } else {
-            students.put(name, new ArrayList<>());
-            System.out.printf("Студент с именем %s добавлен %n", name);
+            return;
         }
+        students.put(name, new ArrayList<>());
+        System.out.printf("Студент с именем %s добавлен %n", name);
     }
 
     public void addGrade(String name, int grade) {
-        if (grade < MIN_GRADE || grade > MAX_GRADE) {
-            System.out.printf("Оценка должна быть в диапазоне от %d до %d %n", MIN_GRADE, MAX_GRADE);
-        } else if (name.isEmpty() || !students.containsKey(name)) {
+        if (name.isEmpty() || !students.containsKey(name)) {
             System.out.println("Такого студента нет в журнале");
-        } else {
-            students.get(name).add(grade);
+            return;
+        } else if (grade < Constants.MIN_GRADE || grade > Constants.MAX_GRADE) {
+            System.out.printf("Оценка должна быть в диапазоне от %d до %d %n", Constants.MIN_GRADE, Constants.MAX_GRADE);
+            return;
         }
+        students.get(name).add(grade);
     }
 
-    public void getStudents() {
+    public void printStudents() {
         for (Map.Entry<String, ArrayList<Integer>> value : students.entrySet()) {
             System.out.printf("Студент с именем %s имеет средний бал %.2f %n%n", value.getKey(), averageArrayList(value.getValue()));
         }

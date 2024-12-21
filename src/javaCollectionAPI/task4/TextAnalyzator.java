@@ -36,50 +36,53 @@ public class TextAnalyzator {
 
     public void startAnalyze() {
         wordsCounter();
-        UniqueWords();
-        maxEntry();
+        uniqueWords();
+        maxEntryWords();
     }
 
     private void wordsCounter() {
-        if (s.length != 0) {
-            for (String str : s) {
-                if (map.containsKey(str)) {
-                    map.put(str, map.get(str) + 1);
-                } else {
-                    map.put(str, 1);
-                }
+        if (s.length == 0) {
+            System.out.println("Список слов пуст");
+            return;
+        }
+        for (String str : s) {
+            if (map.containsKey(str)) {
+                map.put(str, map.get(str) + 1);
+            } else {
+                map.put(str, 1);
             }
-            System.out.printf("Частота слов: %n");
-            for(Map.Entry<String, Integer> entry : map.entrySet()){
-                System.out.printf("%s %d %n", entry.getKey(), entry.getValue() );
-            }
-        } else System.out.println("Список слов пуст");
+        }
+        System.out.printf("Частота слов: %n");
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            System.out.printf("%s %d %n", entry.getKey(), entry.getValue());
+        }
     }
 
-    private void maxEntry() {
-        if (!map.isEmpty()) {
-            int bufferMax = Collections.max(map.values());
-            StringBuilder maxWord = new StringBuilder();
-            for (Map.Entry<String, Integer> valMax : map.entrySet()) {
-                if (valMax.getValue() == bufferMax) {
-                    maxWord.append(valMax.getKey()).append(": ").append(bufferMax).append(" ");
-                }
+    private void maxEntryWords() {
+        if (map.isEmpty()) {
+            System.out.println("Список слов пуст");
+            return;
+        }
+        int maxWordsInList = Collections.max(map.values());
+        System.out.println("Самые частые слова: ");
+        for (Map.Entry<String, Integer> word : map.entrySet()) {
+            if (word.getValue() == maxWordsInList) {
+                System.out.printf("%s: %d ", word.getKey(), word.getValue());
             }
-            System.out.printf("Самые частые слова: %s %n", maxWord);
-        } else System.out.println("Список слов пуст");
+        }
     }
 
-    private void UniqueWords() {
+    private void uniqueWords() {
         Set<String> uniqueWords = map.keySet();
         System.out.printf("Уникальные слова: %s %n", uniqueWords);
     }
 
     private static String[] textFormat(String words) {
-        String[] result;
-        String s;
         if (words.isEmpty()) {
             return new String[0];
         }
+        String[] result;
+        String s;
         s = words.replaceAll("[^A-Za-zА-Яа-я]", " ").trim();
         result = s.split(" {1,}");
         return result;

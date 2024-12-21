@@ -7,13 +7,14 @@ public class PhoneNumberDirectory {
     private final Map<String, String> phoneBook = new HashMap<>();
 
     public void addContactToPhoneBook(String name, String numberPhone) {
-        if (!name.isEmpty() && !numberPhone.isEmpty()) {
-            name = formatName(name);
-            phoneBook.put(name, numberPhone);
-            System.out.printf("Контакт с именем: '%s' и номером телефона: '%s' добавлен %n", name, numberPhone);
-        } else {
+        if (name.isEmpty() && numberPhone.isEmpty()) {
             System.out.println("Поля 'Имя' или 'Номер телефона' не могут быть пустыми\n");
+            return;
         }
+        name = formatName(name);
+        phoneBook.put(name, numberPhone);
+        System.out.printf("Контакт с именем: '%s' и номером телефона: '%s' добавлен %n", name, numberPhone);
+
     }
 
     public String findContact(String name) {
@@ -21,41 +22,38 @@ public class PhoneNumberDirectory {
         if (phoneBook.isEmpty() || !phoneBook.containsKey(name)) {
             return String.format("Контакта с именем %s нет в справочнике %n", name);
         }
-        return String.format("Найден контакт %s %s", name, phoneBook.get(name));
+        return String.format("Найден контакт %s - %s %n", name, phoneBook.get(name));
     }
 
     public String deleteContact(String value) {
+        value = formatName(value);
         if (value.isEmpty() && phoneBook.isEmpty()) {
             return "Список пользователей пуст либо запрашиваемое значение не задано\n";
         }
         if (phoneBook.containsKey(value)) {
             value = formatName(value);
             phoneBook.remove(value);
-            return String.format("Контакт %s был удален %n", phoneBook.get(value));
+            return String.format("Контакт был удален %n");
         } else if (phoneBook.containsValue(value)) {
             for (Map.Entry<String, String> val : phoneBook.entrySet()) {
                 if (val.getValue().equals(value)) {
                     phoneBook.remove(val.getKey());
-                    return "Контакт был удален %n";
+                    return "Контакт был удален \n";
                 }
             }
         }
         return "Номер не найден\n";
     }
 
-    public String getPhoneBook() {
+    public void getPhoneBook() {
         if (phoneBook.isEmpty()) {
-            return "Телефонный справочник пуст\n";
+            System.out.println("Телефонный справочник пуст\n");
+            return;
         }
-        StringBuilder phoneNumbers = new StringBuilder();
+        System.out.println("Телефонный справочник: ");
         for (Map.Entry<String, String> phoneRecord : phoneBook.entrySet()) {
-            phoneNumbers
-                    .append(phoneRecord.getKey())
-                    .append(" - ")
-                    .append(phoneRecord.getValue())
-                    .append("\n");
+            System.out.printf("%s - %s %n", phoneRecord.getKey(), phoneRecord.getValue());
         }
-        return String.format("Телефонный справочник %n%s", phoneNumbers);
     }
 
     public static String formatName(String name) {

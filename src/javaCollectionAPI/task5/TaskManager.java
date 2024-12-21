@@ -51,60 +51,65 @@ package javaCollectionAPI.task5;
 import java.util.LinkedList;
 
 public class TaskManager {
-    LinkedList<String> list = new LinkedList<>();
+    private final LinkedList<String> list = new LinkedList<>();
 
     // Добавление задач
     public void addTask(String task) {
-        if (!task.isEmpty()) {
-            list.add(task);
-            System.out.println("Задача добавлена\n");
-        } else {
+        if (task.isEmpty()) {
             System.out.println("Задача не может быть пустой\n");
+            return;
         }
+        list.add(task);
+        System.out.println("Задача добавлена\n");
     }
 
-    // Просмотр задач
-    public void getTaskList() {
-        if (!list.isEmpty()) {
-            System.out.println("Список задач:");
-            list.forEach(System.out::println);
-            System.out.println();
-        } else {
+    // Печать задач в консоль
+    public void printTaskList() {
+        if (list.isEmpty()) {
             System.out.println("Список задач пуст\n");
+            return;
         }
+        System.out.println("Список задач:");
+        list.forEach(System.out::println);
+        System.out.println();
     }
 
     // Удаление задач
     public void deleteTask(int index) {
-        if (index - 1 >= 0 && !list.isEmpty() && index - 1 < list.size()) {
-            list.remove(index - 1);
-            System.out.println("Задача удалена\n");
-        } else {
+        index = index - 1;
+        if ((list.isEmpty() || index < 0 || index > list.size())) {
             System.out.println("Ошибка удаления, проверьте вводимые данные, возможно такой задачи нет\n");
+            return;
         }
+        list.remove(index);
+        System.out.println("Задача удалена\n");
     }
 
     // Перемещение задач
     public void moveTask(int index, String wayMove) {
         String res;
         index = index - 1;
+
         //Проверка на пустоту списка
         if (list.isEmpty()) {
             System.out.println("Список задач пуст\n");
+            return;
         }
 
         //Верхний предел списка
-        else if (wayMove.equalsIgnoreCase("top") && index == 0) {
+        if (wayMove.equalsIgnoreCase("top") && index == 0) {
             System.out.println("Задача уже в начале списка\n");
+            return;
         }
 
         //Нижний предел списка
-        else if (wayMove.equalsIgnoreCase("bottom") && index == list.size() - 1) {
+        if (wayMove.equalsIgnoreCase("bottom") && index == list.size() - 1) {
             System.out.println("Задача уже в конце списка\n");
+            return;
         }
 
         //Перемещение вверх
-        else if (wayMove.equalsIgnoreCase("top") && index > 0) {
+        if (wayMove.equalsIgnoreCase("top") && index > 0) {
             res = list.set(index - 1, list.get(index));
             list.set(index, res);
             System.out.println("Задача перемещена вверх\n");
@@ -115,7 +120,10 @@ public class TaskManager {
             res = list.set(index + 1, list.get(index));
             list.set(index, res);
             System.out.println("Задача перемещена вниз\n");
-        } else {
+        }
+
+        //Отработка прочих случаев
+        else {
             System.out.println("Ошибка перемещения, проверьте вводимые данные, возможно такой задачи нет\n");
         }
     }

@@ -14,8 +14,8 @@ public class Main {
         usersList.addUsers(victor);
         usersList.addUsers(rinat);
 
-        System.out.println(usersList.getUsers());
-        Launch navyLaunch = new Launch();
-        navyLaunch.navigationStart(usersList);
+        usersList.getUsers();
+        Launcher launcher = new Launcher();
+        launcher.launch(usersList);
     }
 }

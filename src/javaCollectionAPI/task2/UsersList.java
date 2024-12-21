@@ -16,21 +16,15 @@ public class UsersList {
     }
 
     public void sortByName() {
-        if (!users.isEmpty()) {
-            users.sort(Comparator.comparing(User::getName));
-            System.out.println("Список пользователей отсортирован по имени \n");
-        } else {
-            System.out.println("Список пользователей пуст");
-        }
+        users.sort(Comparator.comparing(User::getName));
+        System.out.println("Список пользователей отсортирован по имени \n");
+        getUsers();
     }
 
     public void sortByAge() {
-        if (!users.isEmpty()) {
-            users.sort(Comparator.comparingInt(User::getAge));
-            System.out.println("Список пользователей отсортирован по возрасту \n");
-        } else {
-            System.out.println("Список пользователей пуст");
-        }
+        users.sort(Comparator.comparingInt(User::getAge));
+        System.out.println("Список пользователей отсортирован по возрасту \n");
+        getUsers();
     }
 
     public void addUsers(User user) {
@@ -38,15 +32,11 @@ public class UsersList {
         System.out.printf("Пользователь %s с возрастом %d добавлен %n", user.getName(), user.getAge());
     }
 
-    public String getUsers() {
-        StringBuilder usersResult = new StringBuilder();
+    public void getUsers() {
+        System.out.println("Список пользователей:");
         for (User user : users) {
-            usersResult
-                    .append(user.getName())
-                    .append(" ")
-                    .append(user.getAge())
-                    .append("\n");
+            System.out.printf("%s - %d %n", user.getName(), user.getAge());
         }
-        return usersResult.toString();
+        System.out.println();
     }
 }
