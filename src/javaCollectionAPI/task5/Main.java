@@ -4,14 +4,14 @@ public class Main {
     public static void main(String[] args) {
 
         TaskManager task = new TaskManager();
-        Launcher launcher = new Launcher();
+        Launcher launcher = new Launcher(task);
 
         task.addTask("Go job");
         task.addTask("Go gym");
         task.addTask("Go home");
         task.addTask("Go code");
 
-        launcher.launch(task);
+        launcher.launch();
 
     }
 }

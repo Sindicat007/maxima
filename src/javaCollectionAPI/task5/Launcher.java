@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Launcher {
+    private final TaskManager taskManager;
     private Scanner scan;
     private boolean isWork = true;
     private final String menu = """
@@ -14,7 +15,11 @@ public class Launcher {
             5. Выйти\s
             """;
 
-    public void launch(TaskManager taskManager) {
+    public Launcher(TaskManager taskManager) {
+        this.taskManager = taskManager;
+    }
+
+    public void launch() {
         scan = new Scanner(System.in);
         String choiceMenu;
         System.out.println("--------- Менеджер задач ---------");
@@ -30,8 +35,8 @@ public class Launcher {
                     taskManager.addTask(scan.nextLine());
                 }
                 case "2" -> taskManager.printTaskList();
-                case "3" -> removeTask(taskManager);
-                case "4" -> moveTask(taskManager);
+                case "3" -> removeTask();
+                case "4" -> moveTask();
                 case "5" -> isWork = false;
                 default -> System.out.println("Выбранное действие не предусмотрено, попробуйте снова.");
             }
@@ -39,7 +44,7 @@ public class Launcher {
         scan.close();
     }
 
-    private void removeTask(TaskManager taskManager) {
+    private void removeTask() {
         int indexTaskToDelete;
         System.out.println("Введите индекс задачи, которую нужно удалить");
         while (true) {
@@ -55,7 +60,7 @@ public class Launcher {
         scan.nextLine();
     }
 
-    private void moveTask(TaskManager taskManager) {
+    private void moveTask() {
         int indexTaskToMove;
         System.out.println("Введите индекс задачи, которую нужно переместить");
         while (true) {

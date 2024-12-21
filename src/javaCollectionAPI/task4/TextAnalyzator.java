@@ -26,12 +26,12 @@ import java.util.*;
  */
 
 public class TextAnalyzator {
-    Map<String, Integer> map;
+    Map<String, Integer> wordsToCount;
     String[] s;
 
     public TextAnalyzator(String text) {
         this.s = textFormat(text.toLowerCase());
-        this.map = new HashMap<>();
+        this.wordsToCount = new HashMap<>();
     }
 
     public void startAnalyze() {
@@ -46,26 +46,26 @@ public class TextAnalyzator {
             return;
         }
         for (String str : s) {
-            if (map.containsKey(str)) {
-                map.put(str, map.get(str) + 1);
+            if (wordsToCount.containsKey(str)) {
+                wordsToCount.put(str, wordsToCount.get(str) + 1);
             } else {
-                map.put(str, 1);
+                wordsToCount.put(str, 1);
             }
         }
         System.out.printf("Частота слов: %n");
-        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+        for (Map.Entry<String, Integer> entry : wordsToCount.entrySet()) {
             System.out.printf("%s %d %n", entry.getKey(), entry.getValue());
         }
     }
 
     private void maxEntryWords() {
-        if (map.isEmpty()) {
+        if (wordsToCount.isEmpty()) {
             System.out.println("Список слов пуст");
             return;
         }
-        int maxWordsInList = Collections.max(map.values());
+        int maxWordsInList = Collections.max(wordsToCount.values());
         System.out.println("Самые частые слова: ");
-        for (Map.Entry<String, Integer> word : map.entrySet()) {
+        for (Map.Entry<String, Integer> word : wordsToCount.entrySet()) {
             if (word.getValue() == maxWordsInList) {
                 System.out.printf("%s: %d ", word.getKey(), word.getValue());
             }
@@ -73,7 +73,7 @@ public class TextAnalyzator {
     }
 
     private void uniqueWords() {
-        Set<String> uniqueWords = map.keySet();
+        Set<String> uniqueWords = wordsToCount.keySet();
         System.out.printf("Уникальные слова: %s %n", uniqueWords);
     }
 

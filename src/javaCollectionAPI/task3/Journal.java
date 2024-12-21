@@ -26,37 +26,37 @@ import java.util.Map;
 
 public class Journal {
 
-    private final Map<String, ArrayList<Integer>> students;
+    private final Map<String, ArrayList<Integer>> nameToListGrade;
 
     public Journal() {
-        this.students = new HashMap<>();
+        this.nameToListGrade = new HashMap<>();
     }
 
     public void addStudent(String name) {
         if (name.isEmpty()) {
             System.out.println("Имя студента не может быть пустым");
             return;
-        } else if (students.containsKey(name)) {
+        } else if (nameToListGrade.containsKey(name)) {
             System.out.printf("Студент с именем %s уже есть в списке %n", name);
             return;
         }
-        students.put(name, new ArrayList<>());
+        nameToListGrade.put(name, new ArrayList<>());
         System.out.printf("Студент с именем %s добавлен %n", name);
     }
 
     public void addGrade(String name, int grade) {
-        if (name.isEmpty() || !students.containsKey(name)) {
+        if (name.isEmpty() || !nameToListGrade.containsKey(name)) {
             System.out.println("Такого студента нет в журнале");
             return;
         } else if (grade < Constants.MIN_GRADE || grade > Constants.MAX_GRADE) {
             System.out.printf("Оценка должна быть в диапазоне от %d до %d %n", Constants.MIN_GRADE, Constants.MAX_GRADE);
             return;
         }
-        students.get(name).add(grade);
+        nameToListGrade.get(name).add(grade);
     }
 
     public void printStudents() {
-        for (Map.Entry<String, ArrayList<Integer>> value : students.entrySet()) {
+        for (Map.Entry<String, ArrayList<Integer>> value : nameToListGrade.entrySet()) {
             System.out.printf("Студент с именем %s имеет средний бал %.2f %n%n", value.getKey(), averageArrayList(value.getValue()));
         }
     }

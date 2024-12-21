@@ -51,7 +51,7 @@ package javaCollectionAPI.task5;
 import java.util.LinkedList;
 
 public class TaskManager {
-    private final LinkedList<String> list = new LinkedList<>();
+    private final LinkedList<String> toDoList = new LinkedList<>();
 
     // Добавление задач
     public void addTask(String task) {
@@ -59,39 +59,39 @@ public class TaskManager {
             System.out.println("Задача не может быть пустой\n");
             return;
         }
-        list.add(task);
+        toDoList.add(task);
         System.out.println("Задача добавлена\n");
     }
 
     // Печать задач в консоль
     public void printTaskList() {
-        if (list.isEmpty()) {
+        if (toDoList.isEmpty()) {
             System.out.println("Список задач пуст\n");
             return;
         }
         System.out.println("Список задач:");
-        list.forEach(System.out::println);
+        toDoList.forEach(System.out::println);
         System.out.println();
     }
 
     // Удаление задач
     public void deleteTask(int index) {
         index = index - 1;
-        if ((list.isEmpty() || index < 0 || index > list.size())) {
+        if ((toDoList.isEmpty() || index < 0 || index > toDoList.size())) {
             System.out.println("Ошибка удаления, проверьте вводимые данные, возможно такой задачи нет\n");
             return;
         }
-        list.remove(index);
+        toDoList.remove(index);
         System.out.println("Задача удалена\n");
     }
 
     // Перемещение задач
     public void moveTask(int index, String wayMove) {
-        String res;
+        String taskBuffer;
         index = index - 1;
 
         //Проверка на пустоту списка
-        if (list.isEmpty()) {
+        if (toDoList.isEmpty()) {
             System.out.println("Список задач пуст\n");
             return;
         }
@@ -103,22 +103,22 @@ public class TaskManager {
         }
 
         //Нижний предел списка
-        if (wayMove.equalsIgnoreCase("bottom") && index == list.size() - 1) {
+        if (wayMove.equalsIgnoreCase("bottom") && index == toDoList.size() - 1) {
             System.out.println("Задача уже в конце списка\n");
             return;
         }
 
         //Перемещение вверх
         if (wayMove.equalsIgnoreCase("top") && index > 0) {
-            res = list.set(index - 1, list.get(index));
-            list.set(index, res);
+            taskBuffer = toDoList.set(index - 1, toDoList.get(index));
+            toDoList.set(index, taskBuffer);
             System.out.println("Задача перемещена вверх\n");
         }
 
         //Перемещение вниз
-        else if (wayMove.equalsIgnoreCase("bottom") && index < list.size()) {
-            res = list.set(index + 1, list.get(index));
-            list.set(index, res);
+        else if (wayMove.equalsIgnoreCase("bottom") && index < toDoList.size()) {
+            taskBuffer = toDoList.set(index + 1, toDoList.get(index));
+            toDoList.set(index, taskBuffer);
             System.out.println("Задача перемещена вниз\n");
         }
 

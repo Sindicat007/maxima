@@ -3,14 +3,19 @@ package javaCollectionAPI.task2;
 import java.util.Scanner;
 
 public class Launcher {
+    private final UsersList usersList;
     private boolean isWork = true;
-    String menu = """
+    private final String menu = """
             1. Сортировать по имени\s
             2. Сортировать по возрасту\s
             3. Показать список\s
             4. Выйти\s""";
 
-    public void launch(UsersList usersList) {
+    public Launcher(UsersList usersList) {
+        this.usersList = usersList;
+    }
+
+    public void launch() {
         Scanner scan = new Scanner(System.in);
         String choiceMenu;
         System.out.println("--------- Сортировка пользователей ---------");

@@ -3,8 +3,8 @@ package javaCollectionAPI.task1;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PhoneNumberDirectory {
-    private final Map<String, String> phoneBook = new HashMap<>();
+public class ContactStorage {
+    private final Map<String, String> nameToPhone = new HashMap<>();
 
     public void addContactToPhoneBook(String name, String numberPhone) {
         if (name.isEmpty() && numberPhone.isEmpty()) {
@@ -12,32 +12,32 @@ public class PhoneNumberDirectory {
             return;
         }
         name = formatName(name);
-        phoneBook.put(name, numberPhone);
+        nameToPhone.put(name, numberPhone);
         System.out.printf("Контакт с именем: '%s' и номером телефона: '%s' добавлен %n", name, numberPhone);
 
     }
 
     public String findContact(String name) {
         name = formatName(name);
-        if (phoneBook.isEmpty() || !phoneBook.containsKey(name)) {
+        if (nameToPhone.isEmpty() || !nameToPhone.containsKey(name)) {
             return String.format("Контакта с именем %s нет в справочнике %n", name);
         }
-        return String.format("Найден контакт %s - %s %n", name, phoneBook.get(name));
+        return String.format("Найден контакт %s - %s %n", name, nameToPhone.get(name));
     }
 
     public String deleteContact(String value) {
         value = formatName(value);
-        if (value.isEmpty() && phoneBook.isEmpty()) {
+        if (value.isEmpty() && nameToPhone.isEmpty()) {
             return "Список пользователей пуст либо запрашиваемое значение не задано\n";
         }
-        if (phoneBook.containsKey(value)) {
+        if (nameToPhone.containsKey(value)) {
             value = formatName(value);
-            phoneBook.remove(value);
+            nameToPhone.remove(value);
             return String.format("Контакт был удален %n");
-        } else if (phoneBook.containsValue(value)) {
-            for (Map.Entry<String, String> val : phoneBook.entrySet()) {
+        } else if (nameToPhone.containsValue(value)) {
+            for (Map.Entry<String, String> val : nameToPhone.entrySet()) {
                 if (val.getValue().equals(value)) {
-                    phoneBook.remove(val.getKey());
+                    nameToPhone.remove(val.getKey());
                     return "Контакт был удален \n";
                 }
             }
@@ -46,12 +46,12 @@ public class PhoneNumberDirectory {
     }
 
     public void getPhoneBook() {
-        if (phoneBook.isEmpty()) {
+        if (nameToPhone.isEmpty()) {
             System.out.println("Телефонный справочник пуст\n");
             return;
         }
         System.out.println("Телефонный справочник: ");
-        for (Map.Entry<String, String> phoneRecord : phoneBook.entrySet()) {
+        for (Map.Entry<String, String> phoneRecord : nameToPhone.entrySet()) {
             System.out.printf("%s - %s %n", phoneRecord.getKey(), phoneRecord.getValue());
         }
     }

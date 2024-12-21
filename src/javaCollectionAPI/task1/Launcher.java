@@ -3,6 +3,7 @@ package javaCollectionAPI.task1;
 import java.util.Scanner;
 
 public class Launcher {
+    private final ContactStorage contactStorage;
     private boolean isWork = true;
     private Scanner scan;
     private String name;
@@ -14,7 +15,11 @@ public class Launcher {
             4. Показать все контакты\s
             5. Выйти \s""";
 
-    public void launch(PhoneNumberDirectory phoneBook) {
+    public Launcher(ContactStorage contactStorage) {
+        this.contactStorage = contactStorage;
+    }
+
+    public void launch() {
         scan = new Scanner(System.in);
         System.out.println("---------Телефонный справочник---------");
 
@@ -24,13 +29,13 @@ public class Launcher {
             choiceMenu = scan.nextLine();
 
             switch (choiceMenu) {
-                case "1" -> inputName(phoneBook);
+                case "1" -> inputName();
 
-                case "2" -> printNumberByName(phoneBook);
+                case "2" -> printNumberByName();
 
-                case "3" -> deleteContact(phoneBook);
+                case "3" -> deleteContact();
 
-                case "4" -> phoneBook.getPhoneBook();
+                case "4" -> contactStorage.getPhoneBook();
 
                 case "5" -> {
                     isWork = false;
@@ -43,27 +48,25 @@ public class Launcher {
         scan.close();
     }
 
-    private void inputName(PhoneNumberDirectory phoneBook) {
-        String phone;
+    private void inputName() {
         scan = new Scanner(System.in);
         System.out.println("Введите имя");
         name = scan.nextLine();
         System.out.println("Введите номер телефона в формате 79234567890");
-        phone = scan.nextLine().replaceAll("\\W", "");
-        phoneBook.addContactToPhoneBook(name, phone);
+        String phone = scan.nextLine().replaceAll("\\W", "");
+        contactStorage.addContactToPhoneBook(name, phone);
     }
 
-    private void printNumberByName(PhoneNumberDirectory phoneBook) {
+    private void printNumberByName() {
         System.out.println("Введите имя владельца, чей номер нужно найти:");
         name = scan.nextLine();
-        System.out.println(phoneBook.findContact(name));
+        System.out.println(contactStorage.findContact(name));
     }
 
-    private void deleteContact(PhoneNumberDirectory phoneBook) {
-        String nameOrPhone;
+    private void deleteContact() {
         System.out.println("Введите номер телефона в формате 79234567890 или имя владельца, чей номер нужно удалить");
-        nameOrPhone = scan.nextLine();
-        System.out.println(phoneBook.deleteContact(nameOrPhone));
+        String nameOrPhone = scan.nextLine();
+        System.out.println(contactStorage.deleteContact(nameOrPhone));
     }
 
     private void repeatChoiceMenu() {

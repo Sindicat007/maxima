@@ -4,16 +4,21 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Launcher {
+    private final Journal journal;
     private Scanner scan;
     private boolean isWork = true;
-    private String menu = """
+    private final String menu = """
             1. Добавить студента\s
             2. Добавить оценку студенту\s
             3. Показать студентов и их средние оценки\s
             4. Выйти\s
             """;
 
-    public void launch(Journal journal) {
+    public Launcher(Journal journal) {
+        this.journal = journal;
+    }
+
+    public void launch() {
         scan = new Scanner(System.in);
         String choiceMenu;
         System.out.println("--------- Учебный журнал ---------");
@@ -28,7 +33,7 @@ public class Launcher {
                     System.out.println("Введите имя студента");
                     journal.addStudent(scan.nextLine());
                 }
-                case "2" -> addGradeInJournal(journal);
+                case "2" -> addGradeInJournal();
                 case "3" -> journal.printStudents();
                 case "4" -> isWork = false;
                 default -> System.out.println("Выбранное действие не предусмотрено, попробуйте снова.");
@@ -37,11 +42,10 @@ public class Launcher {
         scan.close();
     }
 
-    private void addGradeInJournal(Journal journal) {
-        String nameStudent;
+    private void addGradeInJournal() {
         int grade;
         System.out.println("Введите имя студента");
-        nameStudent = scan.nextLine();
+        String nameStudent = scan.nextLine();
         System.out.printf("Введите оценку студента от %d до %d%n", Constants.MIN_GRADE, Constants.MAX_GRADE);
         while (true) {
             try {

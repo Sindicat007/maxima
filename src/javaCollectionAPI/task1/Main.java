@@ -3,9 +3,9 @@ package javaCollectionAPI.task1;
 public class Main {
     public static void main(String[] args) {
 
-        PhoneNumberDirectory phone = new PhoneNumberDirectory();
+        ContactStorage phone = new ContactStorage();
 
-        Launcher launcher = new Launcher();
-        launcher.launch(phone);
+        Launcher launcher = new Launcher(phone);
+        launcher.launch();
     }
 }
