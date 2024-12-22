@@ -44,7 +44,7 @@ public class ContactStorage {
         return "Номер не найден\n";
     }
 
-    public void getPhoneBook() {
+    public void printPhoneBook() {
         if (nameToPhone.isEmpty()) {
             System.out.println("Телефонный справочник пуст\n");
             return;

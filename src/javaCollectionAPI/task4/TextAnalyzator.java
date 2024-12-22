@@ -85,10 +85,7 @@ public class TextAnalyzator {
         if (words.isEmpty()) {
             return new String[0];
         }
-        String[] result;
-        String s;
-        s = words.replaceAll("[^A-Za-zА-Яа-я]", " ").trim();
-        result = s.split(" {1,}");
-        return result;
+        String s = words.replaceAll("[^A-Za-zА-Яа-я]", " ").trim();
+        return s.split(" {1,}");
     }
 }

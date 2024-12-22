@@ -35,7 +35,7 @@ public class Launcher {
 
                 case "3" -> deleteContact();
 
-                case "4" -> contactStorage.getPhoneBook();
+                case "4" -> contactStorage.printPhoneBook();
 
                 case "5" -> {
                     isWork = false;

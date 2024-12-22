@@ -1,24 +1,5 @@
 package javaCollectionAPI.task3;
 
-/*
-Задача:
-Создайте программу, которая:
-
-Хранит информацию о студентах и их оценках.
-
-Позволяет добавлять студентов и их оценки.
-
-Выводит список студентов и их средний балл.
-
-Требования к реализации:
-
-Используйте HashMap для хранения студентов. Ключ — имя студента, значение — список оценок (например, ArrayList<Integer>).
-
-Реализуйте методы для добавления оценок студенту и расчета среднего балла.
-
-Предусмотрите текстовое меню для выбора действий.
- */
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -62,13 +43,9 @@ public class Journal {
     }
 
     public static double getAverageGrade(List<Integer> grades) {
-        double result = 0.0;
-        for (int i = 0; i < grades.size(); i++) {
-            result += grades.get(i);
-            if (i == grades.size() - 1 && i > 0) {
-                result = result / (i + 1);
-            }
-        }
-        return result;
+        return grades.stream()
+                .mapToDouble(val -> val)
+                .average()
+                .orElse(0.0);
     }
 }
