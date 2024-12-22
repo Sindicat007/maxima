@@ -26,12 +26,11 @@ public class ContactStorage {
     }
 
     public String deleteContact(String value) {
-        value = formatName(value);
         if (value.isEmpty() && nameToPhone.isEmpty()) {
             return "Список пользователей пуст либо запрашиваемое значение не задано\n";
         }
+        value = formatName(value);
         if (nameToPhone.containsKey(value)) {
-            value = formatName(value);
             nameToPhone.remove(value);
             return String.format("Контакт был удален %n");
         } else if (nameToPhone.containsValue(value)) {
