@@ -29,10 +29,7 @@ public class Launcher {
             choiceMenu = scan.nextLine();
 
             switch (choiceMenu) {
-                case "1" -> {
-                    System.out.println("Введите имя студента");
-                    journal.addStudent(scan.nextLine());
-                }
+                case "1" -> addStudentInJournal();
                 case "2" -> addGradeInJournal();
                 case "3" -> journal.printStudents();
                 case "4" -> isWork = false;
@@ -42,10 +39,20 @@ public class Launcher {
         scan.close();
     }
 
+    private void addStudentInJournal() {
+        System.out.println("Введите имя студента");
+        journal.addStudent(scan.nextLine());
+    }
+
     private void addGradeInJournal() {
-        int grade;
         System.out.println("Введите имя студента");
         String nameStudent = scan.nextLine();
+        journal.addGrade(nameStudent, readGradeFromConsole());
+        scan.nextLine();
+    }
+
+    private int readGradeFromConsole() {
+        int grade;
         System.out.printf("Введите оценку студента от %d до %d%n", Constants.MIN_GRADE, Constants.MAX_GRADE);
         while (true) {
             try {
@@ -56,7 +63,6 @@ public class Launcher {
                 scan.next();
             }
         }
-        journal.addGrade(nameStudent, grade);
-        scan.nextLine();
+        return grade;
     }
 }

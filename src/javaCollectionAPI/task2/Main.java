@@ -14,7 +14,7 @@ public class Main {
         usersList.addUsers(victor);
         usersList.addUsers(rinat);
 
-        usersList.getUsers();
+        usersList.printUsers();
         Launcher launcher = new Launcher(usersList);
         launcher.launch();
     }

@@ -57,15 +57,15 @@ public class Journal {
 
     public void printStudents() {
         for (Map.Entry<String, ArrayList<Integer>> value : nameToListGrade.entrySet()) {
-            System.out.printf("Студент с именем %s имеет средний бал %.2f %n%n", value.getKey(), averageArrayList(value.getValue()));
+            System.out.printf("Студент с именем %s имеет средний бал %.2f %n%n", value.getKey(), getAverageGrade(value.getValue()));
         }
     }
 
-    public static double averageArrayList(List<Integer> list) {
+    public static double getAverageGrade(List<Integer> grades) {
         double result = 0.0;
-        for (int i = 0; i < list.size(); i++) {
-            result += list.get(i);
-            if (i == list.size() - 1 && i > 0) {
+        for (int i = 0; i < grades.size(); i++) {
+            result += grades.get(i);
+            if (i == grades.size() - 1 && i > 0) {
                 result = result / (i + 1);
             }
         }

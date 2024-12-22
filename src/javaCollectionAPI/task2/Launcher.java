@@ -28,7 +28,7 @@ public class Launcher {
             switch (choiceMenu) {
                 case "1" -> usersList.sortByName();
                 case "2" -> usersList.sortByAge();
-                case "3" -> usersList.getUsers();
+                case "3" -> usersList.printUsers();
                 case "4" -> isWork = false;
                 default -> System.out.println("Выбранное действие не предусмотрено, попробуйте снова.");
             }

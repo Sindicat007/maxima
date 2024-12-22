@@ -18,13 +18,13 @@ public class UsersList {
     public void sortByName() {
         users.sort(Comparator.comparing(User::getName));
         System.out.println("Список пользователей отсортирован по имени \n");
-        getUsers();
+        printUsers();
     }
 
     public void sortByAge() {
         users.sort(Comparator.comparingInt(User::getAge));
         System.out.println("Список пользователей отсортирован по возрасту \n");
-        getUsers();
+        printUsers();
     }
 
     public void addUsers(User user) {
@@ -32,7 +32,7 @@ public class UsersList {
         System.out.printf("Пользователь %s с возрастом %d добавлен %n", user.getName(), user.getAge());
     }
 
-    public void getUsers() {
+    public void printUsers() {
         System.out.println("Список пользователей:");
         for (User user : users) {
             System.out.printf("%s - %d %n", user.getName(), user.getAge());

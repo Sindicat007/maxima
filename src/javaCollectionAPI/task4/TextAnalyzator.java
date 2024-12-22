@@ -26,8 +26,8 @@ import java.util.*;
  */
 
 public class TextAnalyzator {
-    Map<String, Integer> wordsToCount;
-    String[] s;
+    private final Map<String, Integer> wordsToCount;
+    private final String[] s;
 
     public TextAnalyzator(String text) {
         this.s = textFormat(text.toLowerCase());
@@ -35,12 +35,12 @@ public class TextAnalyzator {
     }
 
     public void startAnalyze() {
-        wordsCounter();
-        uniqueWords();
-        maxEntryWords();
+        countWords();
+        printUniqueWords();
+        printMostFrequentWords();
     }
 
-    private void wordsCounter() {
+    private void countWords() {
         if (s.length == 0) {
             System.out.println("Список слов пуст");
             return;
@@ -52,13 +52,17 @@ public class TextAnalyzator {
                 wordsToCount.put(str, 1);
             }
         }
+        printCountWords();
+    }
+
+    private void printCountWords() {
         System.out.printf("Частота слов: %n");
-        for (Map.Entry<String, Integer> entry : wordsToCount.entrySet()) {
-            System.out.printf("%s %d %n", entry.getKey(), entry.getValue());
+        for (Map.Entry<String, Integer> word : wordsToCount.entrySet()) {
+            System.out.printf("%s %d %n", word.getKey(), word.getValue());
         }
     }
 
-    private void maxEntryWords() {
+    private void printMostFrequentWords() {
         if (wordsToCount.isEmpty()) {
             System.out.println("Список слов пуст");
             return;
@@ -72,7 +76,7 @@ public class TextAnalyzator {
         }
     }
 
-    private void uniqueWords() {
+    private void printUniqueWords() {
         Set<String> uniqueWords = wordsToCount.keySet();
         System.out.printf("Уникальные слова: %s %n", uniqueWords);
     }

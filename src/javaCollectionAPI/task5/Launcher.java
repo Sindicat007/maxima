@@ -9,9 +9,9 @@ public class Launcher {
     private boolean isWork = true;
     private final String menu = """
             1. Добавить задачу\s
-            2. Показать список задач\s
-            3. Удалить задачу\s
-            4. Переместить задачу\s
+            2. Удалить задачу\s
+            3. Переместить задачу\s
+            4. Показать список задач\s
             5. Выйти\s
             """;
 
@@ -30,18 +30,20 @@ public class Launcher {
             choiceMenu = scan.nextLine();
 
             switch (choiceMenu) {
-                case "1" -> {
-                    System.out.println("Введите текст задачи");
-                    taskManager.addTask(scan.nextLine());
-                }
-                case "2" -> taskManager.printTaskList();
-                case "3" -> removeTask();
-                case "4" -> moveTask();
+                case "1" -> addTask();
+                case "2" -> removeTask();
+                case "3" -> moveTask();
+                case "4" -> taskManager.printTaskList();
                 case "5" -> isWork = false;
                 default -> System.out.println("Выбранное действие не предусмотрено, попробуйте снова.");
             }
         }
         scan.close();
+    }
+
+    private void addTask() {
+        System.out.println("Введите текст задачи");
+        taskManager.addTask(scan.nextLine());
     }
 
     private void removeTask() {
@@ -61,6 +63,11 @@ public class Launcher {
     }
 
     private void moveTask() {
+        System.out.println("Введите направление перемещения задачи: 'top' - вверх, 'down' - вниз");
+        taskManager.moveTask(readIndexFromConsole(), scan.nextLine());
+    }
+
+    private int readIndexFromConsole() {
         int indexTaskToMove;
         System.out.println("Введите индекс задачи, которую нужно переместить");
         while (true) {
@@ -73,7 +80,6 @@ public class Launcher {
             }
         }
         scan.nextLine();
-        System.out.println("Введите направление перемещения задачи: 'top' - вверх, 'bottom' - вниз");
-        taskManager.moveTask(indexTaskToMove, scan.nextLine());
+        return indexTaskToMove;
     }
 }
