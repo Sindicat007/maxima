@@ -18,11 +18,12 @@ public class Main {
         System.out.println("Четные " + evenNumbers);
 
         //Найдите сумму всех чисел, кратных 5.
-        List<Integer> multiply5 = numbers.stream()
+        int multiply5 = numbers.stream()
                 .filter(number -> number % 5 == 0)
-                .toList();
+                .mapToInt(number -> number)
+                .sum();
 
-        System.out.println("Кратные 5" + multiply5);
+        System.out.println("Сумма чисел кратных 5" + multiply5);
 
         //Возведите каждое число в квадрат и соберите их в новый список.
         List<Integer> squareNumber = numbers.stream()
@@ -36,8 +37,5 @@ public class Main {
                 .anyMatch(number -> number > 50);
 
         System.out.println(other50);
-
     }
-
-
 }

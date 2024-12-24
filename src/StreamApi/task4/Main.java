@@ -37,7 +37,7 @@ public class Main {
         String maxGradeStudent = students.stream()
                 .max(Comparator.comparingInt(Student::getGrade))
                 .map(person -> person.getName() + " " + person.getGrade())
-                .orElse(null);
+                .orElse("Такой студент отсутствует");
 
         System.out.printf("Наивысший балл: %s %n", maxGradeStudent);
         System.out.println();

@@ -34,7 +34,7 @@ public class BasicStreamApi {
         //Сформируйте список полных имен старше 30 лет.
         List<String> peopleOver30 = people.stream()
                 .filter(person -> person.getAge() > 30)
-                .map(person1 -> person1.getFirstName() + " " + person1.getLastName())
+                .map(person -> person.getFirstName() + " " + person.getLastName())
                 .toList();
 
         peopleOver30.forEach(System.out::println);
