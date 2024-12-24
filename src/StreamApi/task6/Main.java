@@ -22,12 +22,15 @@ public class Main {
         //Найдите самую дорогую и самую дешевую книгу.
         printBookMaxAndMinPrice(books);
         System.out.println();
+
         //Сформируйте список авторов всех книг без повторений.
         printListWithUniqueAuthor(books);
         System.out.println();
+
         //Подсчитайте общую стоимость всех книг.
         printSumPriceBooks(books);
         System.out.println();
+
         //Отфильтруйте книги, чья цена больше 500 рублей, и соберите их в новую коллекцию.
         printPriceMore500(books);
 
@@ -51,12 +54,11 @@ public class Main {
 
     //Метод печати списка уникальных авторов всех книг без повторений.
     public static void printListWithUniqueAuthor(List<Book> book) {
-        List<String> authorUnique = book.stream()
+        System.out.println("Список уникальных авторов: ");
+        book.stream()
                 .map(Book::getAuthor)
                 .distinct()
-                .toList();
-        System.out.println("Список уникальных авторов: ");
-        authorUnique.forEach(System.out::println);
+                .forEach(System.out::println);
     }
 
     //Метод печати общей стоимости всех книг.
@@ -64,16 +66,14 @@ public class Main {
         double sumPrice = book.stream()
                 .mapToDouble(Book::getPrice)
                 .sum();
-
         System.out.printf("Общая сумма всех книг: %.2f %n", sumPrice);
     }
 
     //Метод фильтрации и печати книг, чья цена больше 500 рублей.
     public static void printPriceMore500(List<Book> book) {
-        List<Book> resultMore500 = book.stream()
-                .filter(s -> s.getPrice() > 500.00)
-                .toList();
         System.out.println("Список книг дороже 500 рублей: ");
-        resultMore500.forEach(System.out::println);
+        book.stream()
+                .filter(s -> s.getPrice() > 500.00)
+                .forEach(System.out::println);
     }
 }

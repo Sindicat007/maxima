@@ -17,16 +17,15 @@ public class Main {
         System.out.println(listResult);
 
         //Убедитесь, что все слова имеют длину не менее 5 символов.
-        List<String> moreThan5Char = list.stream()
-                .filter(s -> s.length() > 4)
-                .toList();
+        boolean moreThan5Char = list.stream()
+                .allMatch(s -> s.length() > 4);
 
         System.out.println(moreThan5Char);
 
         //Найдите слово с максимальной длиной.
         String maxWords = list.stream()
                 .max(Comparator.comparing(String::length))
-                .orElse(null);
+                .orElse("Такого слова нет");
 
         System.out.println(maxWords);
 
