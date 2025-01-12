@@ -21,7 +21,6 @@ public class Order {
     }
 
     public double calculateTotalPrice() {
-
         return products.stream().mapToDouble(Product::getPrice).sum();
     }
 
