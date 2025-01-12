@@ -1,8 +1,8 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import ru.maxima.maven.example.Order;
-import ru.maxima.maven.example.Product;
+import ru.maxima.maven.example.task1.Order;
+import ru.maxima.maven.example.task1.Product;
 
 @DisplayName("Тестирование подсчета общей цены")
 class CalculateTotalPriceTest {

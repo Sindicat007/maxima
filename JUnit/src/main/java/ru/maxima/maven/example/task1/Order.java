@@ -1,4 +1,4 @@
-package ru.maxima.maven.example;
+package ru.maxima.maven.example.task1;
 
 import java.util.ArrayList;
 import java.util.List;
