@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/styles/styles.css">
+    <meta charset="UTF-8">
+    <title>Form</title>
+
+</head>
+<body>
+<form action="/greet" method="POST" onsubmit="return validateForm()">
+    <label for="name">Введите ваше имя:</label>
+    <input type="text" id="name" name="name">
+    <button type="submit">Отправить</button>
+</form>
+<script src="/static/validate/validateForm.js"></script>
+</body>
+</html>
