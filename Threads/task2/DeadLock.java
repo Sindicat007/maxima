@@ -20,7 +20,7 @@ public class DeadLock {
             }
         });
         Thread t2 = new Thread(() -> {
-            synchronized (lock2) {
+            synchronized (lock1) {
                 System.out.println("Поток 2: стартует");
                 try {
                     Thread.sleep(1000);
@@ -28,7 +28,7 @@ public class DeadLock {
                     e.printStackTrace();
                 }
                 System.out.println("Поток 2: Ждет поток 1");
-                synchronized (lock1) {
+                synchronized (lock2) {
                     System.out.println("Поток 2: выполняет 1");
                 }
             }
