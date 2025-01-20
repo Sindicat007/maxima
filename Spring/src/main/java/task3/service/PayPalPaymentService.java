@@ -1,4 +1,4 @@
-package spring.service;
+package task3.service;
 
 import org.springframework.stereotype.Component;
 

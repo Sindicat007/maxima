@@ -6,11 +6,11 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <bean id="bankPaymentService" class="spring.service.BankPaymentService"/>
-    <bean id="payPalPaymentService" class="spring.service.PayPalPaymentService"/>
+    <bean id="bankPaymentService" class="task1.service.BankPaymentService"/>
+    <bean id="payPalPaymentService" class="task1.service.PayPalPaymentService"/>
 
 
-    <bean id="paymentService" class="spring.PaymentProcessor">
-        <property name="paymentService" ref="payPalPaymentService"/>
+    <bean id="paymentProcessor" class="task1.PaymentProcessor">
+        <property name="paymentService" ref="bankPaymentService"/>
     </bean>
 </beans>

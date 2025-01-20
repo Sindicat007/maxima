@@ -1,12 +1,9 @@
-package spring;
+package task1;
 
-import org.springframework.stereotype.Component;
-import spring.service.PaymentService;
+import task1.service.PaymentService;
 
-
-@Component
 public class PaymentProcessor {
-    PaymentService paymentService;
+    private PaymentService paymentService;
 
     public void setPaymentService(PaymentService paymentService) {
         this.paymentService = paymentService;

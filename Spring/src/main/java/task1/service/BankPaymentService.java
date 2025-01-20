@@ -1,8 +1,5 @@
-package spring.service;
+package task1.service;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class BankPaymentService implements PaymentService {
 
     @Override

@@ -1,12 +1,11 @@
-package spring.config;
+package task2.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import spring.PaymentProcessor;
-import spring.service.BankPaymentService;
-import spring.service.PayPalPaymentService;
-import spring.service.PaymentService;
-
+import task2.PaymentProcessor;
+import task2.service.BankPaymentService;
+import task2.service.PayPalPaymentService;
+import task2.service.PaymentService;
 
 @Configuration
 public class AppConfig {
