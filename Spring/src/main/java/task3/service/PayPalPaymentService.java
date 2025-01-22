@@ -2,7 +2,7 @@ package task3.service;
 
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("paypalPaymentService")
 public class PayPalPaymentService implements PaymentService {
 
     @Override

@@ -3,9 +3,9 @@ package task1;
 import task1.service.PaymentService;
 
 public class PaymentProcessor {
-    private PaymentService paymentService;
+    private final PaymentService paymentService;
 
-    public void setPaymentService(PaymentService paymentService) {
+    public PaymentProcessor(PaymentService paymentService) {
         this.paymentService = paymentService;
     }
 

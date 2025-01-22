@@ -11,6 +11,6 @@
 
 
     <bean id="paymentProcessor" class="task1.PaymentProcessor">
-        <property name="paymentService" ref="bankPaymentService"/>
+        <constructor-arg ref="bankPaymentService"/>
     </bean>
 </beans>
