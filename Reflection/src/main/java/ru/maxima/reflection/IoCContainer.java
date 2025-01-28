@@ -29,7 +29,6 @@ public class IoCContainer {
                     } else if (clazz.isAnnotationPresent(Scope.class) && clazz.getAnnotation(Scope.class).value().equals("prototype")) {
                         prototypes.add(clazz);
                     }
-
                 }
             }
         } catch (Exception e) {
@@ -49,6 +48,10 @@ public class IoCContainer {
                     }
                 }
                 if (field.isAnnotationPresent(Value.class)) {
+                    if (!field.getType().toString().equals("int") && !field.getType().equals(Integer.class)) {
+                        System.out.println("Error type field" + field.getType());
+                        return;
+                    }
                     try {
                         field.setAccessible(true);
                         field.set(instance, Integer.parseInt(field.getAnnotation(Value.class).port()));
