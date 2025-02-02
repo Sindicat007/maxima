@@ -10,6 +10,11 @@ public class App {
 
         OrderService orderService = ctx.getBean(OrderService.class);
 
+        String[] beanDefinitionNames = ctx.getBeanDefinitionNames();
+        for (String beanDefinitionName : beanDefinitionNames) {
+            System.out.println(beanDefinitionName);
+        }
+
         orderService.addUser("Viktor");
         orderService.addOrder("Мясо, Чай");
         orderService.printUserAndOrder();

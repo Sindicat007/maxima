@@ -1,18 +1,16 @@
 package ru.maxima.beans.task5dop;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 public class OrderRepository {
-    private List<String> orders;
 
-    @Autowired
-    public void setOrders() {
-        this.orders = new ArrayList<>();
+    private final List<String> orders;
+
+    public OrderRepository(List<String> orders) {
+        this.orders = orders;
     }
 
     public void addOrder(String order) {

@@ -8,8 +8,10 @@ public class App {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(App.class);
         UserService userService = ctx.getBean(UserService.class);
+        UserService userService1 = ctx.getBean(UserService.class);
 
         userService.addUser("Any person");
+        System.out.println(userService1 == userService);
         userService.printUsers();
     }
 }

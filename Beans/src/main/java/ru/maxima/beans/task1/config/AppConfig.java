@@ -8,12 +8,12 @@ import ru.maxima.beans.task1.BookService;
 @Configuration
 public class AppConfig {
     @Bean
-    BookRepository bookRepository() {
+    public BookRepository bookRepository() {
         return new BookRepository();
     }
 
     @Bean
-    BookService bookService() {
+    public BookService bookService() {
         return new BookService(bookRepository());
     }
 }

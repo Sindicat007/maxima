@@ -2,14 +2,21 @@ package ru.maxima.beans.task4;
 
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service
 public class OrderService {
     private final UserRepository userRepository;
-    private final OrderRepository orderRepository;
+    private OrderRepository orderRepository;
 
-    public OrderService(UserRepository userRepository, OrderRepository orderRepository) {
+    public OrderService(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.orderRepository = orderRepository;
+        setOrderRepository();
+    }
+
+    public void setOrderRepository() {
+        this.orderRepository = new OrderRepository();
+        orderRepository.setOrderRepository(new ArrayList<>());
     }
 
     public void addUser(String user) {
@@ -26,7 +33,7 @@ public class OrderService {
         } else {
             System.out.println("Список пользователей и заказов: ");
             userRepository.getUsers().forEach(System.out::println);
-            orderRepository.getOrders().forEach(System.out::println);
+            orderRepository.getOrderRepository().forEach(System.out::println);
         }
     }
 }

@@ -1,7 +1,7 @@
 package ru.maxima.beans.task1;
 
 public class BookService {
-    BookRepository bookRepository;
+    private final BookRepository bookRepository;
 
     public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
