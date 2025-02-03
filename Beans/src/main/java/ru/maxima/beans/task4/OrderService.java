@@ -1,8 +1,8 @@
 package ru.maxima.beans.task4;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 
 @Service
 public class OrderService {
@@ -11,12 +11,11 @@ public class OrderService {
 
     public OrderService(UserRepository userRepository) {
         this.userRepository = userRepository;
-        setOrderRepository();
     }
 
-    public void setOrderRepository() {
-        this.orderRepository = new OrderRepository();
-        orderRepository.setOrderRepository(new ArrayList<>());
+    @Autowired
+    public void setOrderRepository(OrderRepository orderRepository) {
+        this.orderRepository = orderRepository;
     }
 
     public void addUser(String user) {

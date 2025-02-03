@@ -7,9 +7,10 @@ import java.util.List;
 
 @Repository
 public class OrderRepository {
-    @Autowired
+
     private List<String> orders;
 
+    @Autowired
     public void setOrderRepository(List<String> orders) {
         this.orders = orders;
     }
