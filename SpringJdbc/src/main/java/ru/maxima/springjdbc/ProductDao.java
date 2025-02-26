@@ -1,5 +1,6 @@
 package ru.maxima.springjdbc;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -8,51 +9,40 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import static ru.maxima.springjdbc.SqlRequest.*;
+
+@RequiredArgsConstructor
 @Repository
 public class ProductDao {
     private final JdbcTemplate jdbcTemplate;
 
-    public ProductDao(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
 
     public void saveProduct(Product product) {
-        String sql = "INSERT INTO products.products (name, price) VALUES(?, ?)";
-        jdbcTemplate.update(sql, product.getName(), product.getPrice());
+        jdbcTemplate.update(SAVE_PRODUCT, product.getName(), product.getPrice());
     }
 
-    private boolean saveLogs(Product product, String logMessages) {
-        String sql = "INSERT INTO products.logs (id, message) VALUES (?, ?)";
-        jdbcTemplate.update(sql, product.getId(), logMessages);
-        return true;
-    }
-
-    public void update(Product product) {
-        String sql = "UPDATE products.products SET name = ?, price = ? WHERE id = ?";
-        jdbcTemplate.update(sql, product.getName(), product.getPrice(), product.getId());
+    public void updateProduct(Product product) {
+        jdbcTemplate.update(UPDATE_PRODUCT, product.getName(), product.getPrice(), product.getId());
     }
 
     public void deleteById(int id) {
-        if (id == 0) return;
-        String sql = "DELETE FROM products.products WHERE id =?";
-        jdbcTemplate.update(sql, id);
+        jdbcTemplate.update(DELETE_PRODUCT, id);
     }
 
     public Product findById(int id) {
-        if (id == 0) return null;
-        String sql = "SELECT * FROM products.products WHERE id = ?";
-        return jdbcTemplate.queryForObject(sql, productRowMapper(), id);
+        return jdbcTemplate.queryForObject(GET_PRODUCT_BY_ID, productRowMapper(), id);
     }
 
     public List<Product> getAllProducts() {
-        String sql = "SELECT * FROM products.products";
-        System.out.println(jdbcTemplate.query(sql, productRowMapper()));
-        return jdbcTemplate.query(sql, productRowMapper());
+        return jdbcTemplate.query(GET_ALL_PRODUCTS, productRowMapper());
+    }
+
+    private int saveLogs(Product product, String logMessages) {
+        return jdbcTemplate.update(SAVE_LOG, product.getId(), logMessages);
     }
 
     public List<String> getAllLogs() {
-        String sql = "SELECT * FROM products.logs";
-        return jdbcTemplate.query(sql, (rs, rowNum) -> rs.getString("message"));
+        return jdbcTemplate.query(GET_LOGS, (rs, rowNum) -> rs.getString("message"));
     }
 
     public void createProductWithLog(Product product) {
@@ -63,7 +53,7 @@ public class ProductDao {
         saveProduct(product);
         logMessages.append(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now()))
                 .append(" данные добавлены");
-        if (saveLogs(product, logMessages.toString())) {
+        if (saveLogs(product, logMessages.toString()) > 0) {
             System.out.println("Данные в лог добавлены успешно");
         } else {
             deleteById(product.getId());
