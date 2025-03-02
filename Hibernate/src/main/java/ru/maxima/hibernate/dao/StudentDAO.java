@@ -1,46 +1,47 @@
-package ru.maxima.hibernate;
+package ru.maxima.hibernate.dao;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import ru.maxima.hibernate.config.HibernateUtil;
+import ru.maxima.hibernate.entity.Student;
 
 import java.util.List;
 
-public class CourseDAO {
+public class StudentDAO {
 
-    public void saveCourse(Course course) {
+    public void saveStudent(Student student) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.persist(course);
+            session.persist(student);
             transaction.commit();
         }
     }
 
-    public void updateCourse(Course course) {
+    public void updateStudent(Student student) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.merge(course);
+            session.merge(student);
             transaction.commit();
         }
     }
 
-    public Course getCourseById(Long id) {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.get(Course.class, id);
-        }
-    }
-
-    public void deleteCourse(Course course) {
+    public void deleteStudent(Student student) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.delete(course);
+            session.delete(student);
             transaction.commit();
         }
     }
 
-    public List<Course> getAllCourses() {
+    public Student getStudentById(Long id) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            List<Course> courses = session.createQuery("from Course").list();
-            return courses;
+            return session.get(Student.class, id);
+        }
+    }
+
+    public List<Student> getAllStudents() {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.createQuery("from Student").list();
         }
     }
 }

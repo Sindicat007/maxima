@@ -1,4 +1,4 @@
-package ru.maxima.hibernate;
+package ru.maxima.hibernate.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

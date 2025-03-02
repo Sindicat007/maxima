@@ -1,4 +1,4 @@
-package ru.maxima.hibernate;
+package ru.maxima.hibernate.config;
 
 import lombok.Getter;
 import org.hibernate.SessionFactory;
