@@ -12,7 +12,7 @@ public class CourseDAO {
     public void saveCourse(Course course) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.persist(course);
+            session.save(course);
             transaction.commit();
         }
     }

@@ -12,7 +12,7 @@ public class StudentDAO {
     public void saveStudent(Student student) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.persist(student);
+            session.save(student);
             transaction.commit();
         }
     }

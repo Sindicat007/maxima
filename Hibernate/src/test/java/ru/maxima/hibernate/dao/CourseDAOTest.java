@@ -1,76 +1,59 @@
 package ru.maxima.hibernate.dao;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.junit.jupiter.api.*;
-import ru.maxima.hibernate.config.HibernateUtil;
 import ru.maxima.hibernate.entity.Course;
 
+import java.util.HashSet;
 import java.util.List;
 
 class CourseDAOTest {
-
-    private static SessionFactory sessionFactory;
-    private static Session session;
-
-
-    @BeforeAll
-    public static void setup() {
-        sessionFactory = HibernateUtil.getSessionFactory();
-    }
-
-    @AfterAll
-    public static void tearDown() {
-        if (sessionFactory != null
-                && !sessionFactory.isClosed()) {
-            sessionFactory.close();
-        }
-    }
+    CourseDAO courseDAO = new CourseDAO();
 
     @Test
     @DisplayName("Save course")
     void saveCourse() {
-        session.beginTransaction();
-
         Course course = new Course();
-        course.setName("Java2222");
-
-        var id = (Long) session.save(course);
-        session.getTransaction().commit();
-        Assertions.assertTrue(id > 0);
+        course.setId(5L);
+        course.setName("JavaRush");
+        courseDAO.saveCourse(course);
+        Assertions.assertNotNull(courseDAO.getCourseById(course.getId()));
     }
 
-//    @Test
-//    @DisplayName("Update course")
-//    void updateCourse() {
-//        Course course = new Course();
-//        course.setName("Java3333");
-//        session.update(course);
-//        Assertions.assertEquals(course, session.get(Course.class, course.getId()));
-//    }
-//
-//    @Test
-//    @DisplayName("Get course by id")
-//    void getCourseById() {
-//        Course course = new Course();
-//        course.setId(1L);
-//        Assertions.assertEquals("Java", session.get(Course.class, course.getId()));
-//    }
-//
-//    @Test
-//    @DisplayName("Delete course")
-//    void deleteCourse() {
-//        Course course = new Course();
-//        course.setId(1L);
-//        Assertions.assertNull(course);
-//    }
-//
-//    @Test
-//    @DisplayName("Get all courses")
-//    void getAllCourses() {
-//        Course course = new Course();
-//        course.setName("Java2222");
-//        List<Course> courses = session.createQuery("FROM Course").list();
-//        Assertions.assertNotNull(courses);
-//    }
+    @Test
+    @DisplayName("Get course by id")
+    void getCourseById() {
+        Course course = courseDAO.getCourseById(1L);
+        Assertions.assertNotNull(course);
+        System.out.println(course.getName());
+
+    }
+
+    @Test
+    @DisplayName("Get all courses")
+    void getAllCourses() {
+        List<Course> courses = courseDAO.getAllCourses();
+        Assertions.assertNotNull(courses);
+    }
+
+    @Test
+    @DisplayName("Update course")
+    void updateCourse() {
+        Course course = new Course();
+        course.setName("Java3113");
+        course.setId(5L);
+        course.setStudents(new HashSet<>());
+
+        courseDAO.updateCourse(course);
+        Assertions.assertEquals(course, courseDAO.getCourseById(course.getId()));
+    }
+
+    @Test
+    @DisplayName("Delete course")
+    void deleteCourse() {
+        Course course = new Course();
+        course.setId(5L);
+        courseDAO.deleteCourse(course);
+        Assertions.assertNull(courseDAO.getCourseById(course.getId()));
+    }
+
 }
