@@ -36,7 +36,7 @@ public class MvcController {
     }
 
     @GetMapping("/getFormForAddingBooks")
-    public String showAddForm(){
+    public String showAddForm() {
         return "addBook";
     }
 
