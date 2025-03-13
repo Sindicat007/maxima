@@ -17,7 +17,6 @@ public class BookService {
         bookRepository.saveBook(book);
     }
 
-    @Transactional
     public List<Book> getAllBooks() {
         return bookRepository.getAllBooks();
     }

@@ -1,6 +1,7 @@
 package ru.maxima.springmvc.repository;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -9,7 +10,7 @@ import ru.maxima.springmvc.entity.Book;
 
 import java.util.List;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Repository
 public class BookRepository {
 

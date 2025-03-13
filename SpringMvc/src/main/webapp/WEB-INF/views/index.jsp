@@ -5,6 +5,6 @@
 </head>
 <body>
     <h1>${message}</h1>
-   <a href="/showBooks">All books</a>
+   <a href="/book/showBooks">All books</a>
 </body>
 </html>

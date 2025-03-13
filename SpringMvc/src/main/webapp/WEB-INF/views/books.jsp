@@ -20,7 +20,7 @@
 </c:forEach>
 </table>
 <br>
-<a href="${pageContext.request.contextPath}/getFormForAddingBooks">Add new book</a>
+<a href="${pageContext.request.contextPath}/book/getFormForAddingBooks">Add new book</a>
 
 </body>
 </html>
