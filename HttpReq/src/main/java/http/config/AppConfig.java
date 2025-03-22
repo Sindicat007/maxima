@@ -11,8 +11,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableWebMvc
 @ComponentScan(basePackages = "http")
 public class AppConfig {
- @Bean
+    @Bean
     public ViewResolver viewResolver() {
-     return new InternalResourceViewResolver("/WEB-INF/views/", ".jsp");
- }
+        return new InternalResourceViewResolver("/WEB-INF/views/", ".jsp");
+    }
 }
