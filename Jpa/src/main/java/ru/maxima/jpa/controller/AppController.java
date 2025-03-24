@@ -1,29 +1,24 @@
 package ru.maxima.jpa.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.maxima.jpa.dto.BookDto;
 import ru.maxima.jpa.service.BookService;
 
-import java.util.List;
 import java.util.Optional;
-
+@RequiredArgsConstructor
 @RestController
-@RequestMapping("/")
+@RequestMapping("/books")
 public class AppController {
-    public AppController(BookService bookService) {
-        this.bookService = bookService;
-    }
-
     private final BookService bookService;
 
-    @GetMapping("/books")
+    @GetMapping("/getAllBooks")
     public ResponseEntity<String> findBooks() {
-        List<BookDto> books = bookService.getAllBooks();
-        return ResponseEntity.ok(books.stream().map(BookDto::toString).toList().toString());
+        return ResponseEntity.ok(bookService.getAllBooks().toString());
     }
 
-    @GetMapping("/books/add")
+    @GetMapping("/add")
     public String addBook(@RequestParam("name") String name,
                           @RequestParam("author") String author,
                           @RequestParam("yearPublication") String yearPublication) {
@@ -31,15 +26,18 @@ public class AppController {
         return "redirect:/";
     }
 
-    @GetMapping("/books/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteBook(@PathVariable("id") Long id) {
         bookService.deleteById(id);
         return "redirect:/";
     }
 
-    @GetMapping("/books/get/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity<String> findBookById(@PathVariable("id") Long id) {
         Optional<BookDto> book = bookService.getUserById(id);
+        if (book.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok(book.toString());
     }
 }
