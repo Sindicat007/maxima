@@ -3,7 +3,7 @@ package ru.maxima.jpa.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.maxima.jpa.dto.BookDto;
-import ru.maxima.jpa.entity.Book;
+import ru.maxima.jpa.entity.BookEntity;
 import ru.maxima.jpa.mapper.BookMapper;
 import ru.maxima.jpa.repository.BookRepository;
 
@@ -19,8 +19,8 @@ public class BookService {
     private final BookMapper mapper;
 
     public BookDto addBook(BookDto bookDto) {
-        Book book = mapper.mapBookDtoToBook(bookDto);
-        Book savedBook = bookRepository.save(book);
+        BookEntity book = mapper.mapBookDtoToBook(bookDto);
+        BookEntity savedBook = bookRepository.save(book);
         return mapper.mapBookToBookDto(savedBook);
     }
 

@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(schema = "books", name = "book")
-public class Book {
+public class BookEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
