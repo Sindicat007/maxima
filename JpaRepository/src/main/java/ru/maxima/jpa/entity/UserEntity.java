@@ -4,8 +4,12 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+/*
+ * Сущность пользователя
+ *
+ */
 @Entity
-@Table(schema = "users", name = "user")
+@Table(schema = "user_service", name = "users")
 @Getter
 @Setter
 public class UserEntity {

@@ -10,6 +10,10 @@ import ru.maxima.jpa.repository.UserRepository;
 
 import java.util.List;
 
+/*
+ * Сервис для работы с пользователями
+ *
+ */
 @RequiredArgsConstructor
 @Service
 public class UserService {
@@ -32,12 +36,9 @@ public class UserService {
     }
 
     @Transactional
-    public void deleteUserById(Long id) {
-        userRepository.deleteById(id);
-    }
-
-    @Transactional
-    public void createUser(UserDTO userDTO) {
-        userRepository.save(userMapper.toEntity(userDTO));
+    public UserEntity createUser(UserDTO userDTO) {
+        userRepository.save(userMapper
+                .toEntity(userDTO));
+        return userMapper.toEntity(userDTO);
     }
 }

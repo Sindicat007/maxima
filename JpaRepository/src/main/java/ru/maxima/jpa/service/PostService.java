@@ -16,6 +16,10 @@ import ru.maxima.jpa.repository.UserRepository;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/*
+ * Сервис для работы с постами
+ *
+ */
 @RequiredArgsConstructor
 @Service
 public class PostService {
@@ -28,10 +32,8 @@ public class PostService {
     public void addPost(PostDTO postDTO, Long userId) {
         UserEntity user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
 
-        PostEntity postEntity = new PostEntity();
+        PostEntity postEntity = postMapper.toEntity(postDTO);
         postEntity.setUser(user);
-        postEntity.setTitle(postMapper.toEntity(postDTO).getTitle());
-        postEntity.setContent(postMapper.toEntity(postDTO).getContent());
         postEntity.setCreatedAt(LocalDateTime.now());
 
         postRepository.save(postEntity);

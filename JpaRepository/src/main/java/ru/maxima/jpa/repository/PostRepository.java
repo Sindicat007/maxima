@@ -9,13 +9,15 @@ import ru.maxima.jpa.entity.UserEntity;
 
 import java.util.List;
 
+/*
+ * Репозиторий для работы с постами
+ *
+ */
 public interface PostRepository extends JpaRepository<PostEntity, Long> {
     List<PostEntity> findByUser(UserEntity userEntity);
 
     List<PostEntity> findPostByUser(UserEntity userEntity, Pageable pageable);
 
-    @Query(value = "SELECT * FROM users.posts WHERE title LIKE %:title%", nativeQuery = true)
+    @Query("SELECT p FROM PostEntity p JOIN FETCH p.user WHERE p.title LIKE %:title%")
     List<PostEntity> findByTitle(@Param("title") String title);
-
-
 }

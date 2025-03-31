@@ -6,8 +6,12 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+/*
+ * Сущность поста
+ *
+ */
 @Entity
-@Table(schema = "users", name = "posts")
+@Table(schema = "post_service", name = "posts")
 @Getter
 @Setter
 public class PostEntity {
@@ -21,13 +25,13 @@ public class PostEntity {
     @Column(name = "content", nullable = false)
     private String content;
 
-    @Column(name = "createdAt", nullable = false)
+    @Column(name = "createdat", nullable = false)
     private LocalDateTime createdAt;
 
     @Column(name = "user_id", insertable = false, updatable = false)
     private Long userId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
