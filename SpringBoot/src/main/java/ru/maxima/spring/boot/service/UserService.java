@@ -1,7 +1,6 @@
 package ru.maxima.spring.boot.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.maxima.spring.boot.entity.UserEntity;
@@ -13,20 +12,20 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
-//    private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
-//    public void createUser(UserEntity user) {
-//        if (userRepository.findByUsername(user.getUsername()).isEmpty()) {
-//            user.setPassword(passwordEncoder.encode(user.getPassword()));
-//            userRepository.save(user);
-//        }
-//    }
-//
-//    public Optional<UserEntity> getUser(UserEntity user) {
-//        if (userRepository.findByUsername(user.getUsername()).isPresent()) {
-//            return userRepository.findByUsername(user.getUsername());
-//        } else {
-//            return Optional.empty();
-//        }
-//    }
+    public void createUser(UserEntity user) {
+        if (userRepository.findByUsername(user.getUsername()).isEmpty()) {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            userRepository.save(user);
+        }
+    }
+
+    public Optional<UserEntity> getUser(UserEntity user) {
+        if (userRepository.findByUsername(user.getUsername()).isPresent()) {
+            return userRepository.findByUsername(user.getUsername());
+        } else {
+            return Optional.empty();
+        }
+    }
 }

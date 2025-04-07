@@ -1,10 +1,13 @@
 package ru.maxima.spring.boot.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Table(schema = "books", name = "user")
+@Table(schema = "user_service", name = "users")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -18,6 +21,7 @@ public class UserEntity {
     @Column(unique = true)
     private String username;
     private String password;
+    @Column(name = "roles")
     private String roles;
 
 }

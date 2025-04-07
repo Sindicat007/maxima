@@ -1,20 +1,17 @@
-package ru.maxima.spring.boot.controller;
+package ru.maxima.spring.boot.restController;
 
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("/admin")
 public class AdminController {
-//    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/home")
     public String getAdminData() {
         return "Hi admin";
-    }
-    @GetMapping("/login")
-    public String login() {
-        return "login";
     }
 }

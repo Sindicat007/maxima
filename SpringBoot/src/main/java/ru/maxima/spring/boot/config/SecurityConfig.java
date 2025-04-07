@@ -2,54 +2,54 @@ package ru.maxima.spring.boot.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractAuthenticationFilterConfigurer;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import ru.maxima.spring.boot.security.MyUserDetailsService;
 
 @Configuration
+@EnableWebSecurity
+@EnableMethodSecurity
 public class SecurityConfig {
 
-    /**
-     * Конфигурация безопасности.
-     */
+    @Bean
+    UserDetailsService userDetailsService() {
+        return new MyUserDetailsService();
+    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .authorizeHttpRequests(req -> req
-                        .requestMatchers("/registration").permitAll()
+                .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/login").permitAll()
-                        .requestMatchers("/**").authenticated()
-                )
-                .authenticationManager(auth -> auth)
-                .formLogin(form -> form.loginPage("/login"))
-                .csrf(AbstractHttpConfigurer::disable)
-                .cors(AbstractHttpConfigurer::disable)
+                        .requestMatchers("/books").permitAll()
+                        .requestMatchers("/books/get/**").permitAll()
+                        .requestMatchers("/register/**").permitAll()
+                        .anyRequest().authenticated())
+                .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
                 .build();
+
     }
 
-    /**
-     * Кодировщик для паролей
-     */
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return NoOpPasswordEncoder.getInstance();
-//    }
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return NoOpPasswordEncoder.getInstance();
+    }
 
-    /**
-     * Пустой конфиг для тестов
-     */
-//    @Profile("test")
-//    @Bean
-//    public SecurityFilterChain securityFilterChainUnsecured(HttpSecurity http) throws Exception {
-//        return http
-//                .authorizeHttpRequests(a -> a.anyRequest().permitAll())
-//                .csrf(AbstractHttpConfigurer::disable)
-//                .cors(AbstractHttpConfigurer::disable)
-//                .build();
-//    }
+    @Bean
+    public AuthenticationManager authenticationManager(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(userDetailsService);
+        authProvider.setPasswordEncoder(passwordEncoder);
+        return new ProviderManager(authProvider);
+    }
 
 }
