@@ -5,6 +5,10 @@ import org.mapstruct.Mapping;
 import ru.maxima.spring.boot.dto.BookDto;
 import ru.maxima.spring.boot.entity.BookEntity;
 
+/*
+ * Маппер для преобразования объектов между двумя различными моделями данных.
+ */
+
 @Mapper(componentModel = "spring")
 public interface BookMapper {
     BookDto toBookDto(BookEntity bookEntity);

@@ -6,6 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/*
+ * Сущность для хранения данных о пользователе
+ */
+
 @Entity
 @Table(schema = "user_service", name = "users")
 @AllArgsConstructor

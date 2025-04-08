@@ -9,6 +9,10 @@ import ru.maxima.spring.boot.repository.UserRepository;
 
 import java.util.Optional;
 
+/*
+ * Кастомная реализация сервиса аутентификации пользователя.
+ */
+
 public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired

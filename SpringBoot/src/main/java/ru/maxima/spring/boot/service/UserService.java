@@ -8,6 +8,10 @@ import ru.maxima.spring.boot.repository.UserRepository;
 
 import java.util.Optional;
 
+/*
+ * Сервис для работы с пользователями
+ */
+
 @Service
 @RequiredArgsConstructor
 public class UserService {

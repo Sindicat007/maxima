@@ -6,6 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/*
+ * Сущность для хранения данных о книге
+ */
+
 @Entity
 @Table(schema = "book_service", name = "books")
 @AllArgsConstructor

@@ -12,6 +12,10 @@ import ru.maxima.spring.boot.service.BookService;
 import java.util.List;
 import java.util.Optional;
 
+/*
+ * Контроллер для работы с книгами.
+ */
+
 @Controller
 @RequestMapping("/books")
 @RequiredArgsConstructor
@@ -46,8 +50,8 @@ public class BookController {
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @PostMapping("/delete-book")
-    public String deleteBook(@RequestParam("bookId") Long id) {
+    @DeleteMapping("/delete-book/{id}")
+    public String deleteBook(@PathVariable("id") Long id) {
         bookService.deleteBookById(id);
         return "redirect:/books";
     }

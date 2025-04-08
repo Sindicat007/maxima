@@ -10,6 +10,10 @@ import ru.maxima.spring.boot.repository.BookRepository;
 import java.util.List;
 import java.util.Optional;
 
+/*
+ * Сервис для работы с книгами
+ */
+
 @Service
 @RequiredArgsConstructor
 public class BookService {

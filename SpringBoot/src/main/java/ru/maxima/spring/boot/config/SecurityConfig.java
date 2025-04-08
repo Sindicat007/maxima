@@ -15,13 +15,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import ru.maxima.spring.boot.security.MyUserDetailsService;
 
+/*
+ * Конфигурация безопасности
+ */
+
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfig {
 
     @Bean
-    UserDetailsService userDetailsService() {
+    public UserDetailsService userDetailsService() {
         return new MyUserDetailsService();
     }
 
@@ -30,8 +34,6 @@ public class SecurityConfig {
         return http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/login").permitAll()
-                        .requestMatchers("/books").permitAll()
-                        .requestMatchers("/books/get/**").permitAll()
                         .requestMatchers("/register/**").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)

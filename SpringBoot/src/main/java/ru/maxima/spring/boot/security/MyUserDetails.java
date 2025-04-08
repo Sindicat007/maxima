@@ -10,6 +10,10 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+/*
+ * Реализация интерфейса UserDetails, который предоставляет информацию о пользователе
+ */
+
 @AllArgsConstructor
 public class MyUserDetails implements UserDetails {
     private final UserEntity user;

@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.*;
 import ru.maxima.spring.boot.entity.UserEntity;
 import ru.maxima.spring.boot.service.UserService;
 
+/*
+ * Контроллер для регистрации пользователей.
+ */
+
 @Controller
 @RequestMapping("/")
 @RequiredArgsConstructor
