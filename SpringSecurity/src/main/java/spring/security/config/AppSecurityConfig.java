@@ -14,6 +14,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+/*
+ * Конфигурация Spring Security
+ */
+
 @EnableWebSecurity
 @Configuration
 public class AppSecurityConfig {
