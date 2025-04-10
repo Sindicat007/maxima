@@ -10,7 +10,6 @@ import java.util.List;
 /*
  * Сервис для работы с продуктами
  */
-
 @Service
 @RequiredArgsConstructor
 public class ProductService {

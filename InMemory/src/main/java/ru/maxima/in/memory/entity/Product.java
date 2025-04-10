@@ -1,15 +1,13 @@
 package ru.maxima.in.memory.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 /*
  * Сущность продукта
  */
-
-@Data
+@Getter
+@Setter
 @Table(name = "products")
 @Entity
 @AllArgsConstructor

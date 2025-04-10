@@ -12,7 +12,6 @@ import java.util.List;
 /*
  * Контроллер для продуктов
  */
-
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/products")

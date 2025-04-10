@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /*
  * Класс запуска приложения
  */
-
 @SpringBootApplication
 public class InMemoryApplication {
 
