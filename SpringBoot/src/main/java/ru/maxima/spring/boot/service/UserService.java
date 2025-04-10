@@ -10,8 +10,9 @@ import java.util.Optional;
 
 /*
  * Сервис для работы с пользователями
+ *
+ * @author Sindicat
  */
-
 @Service
 @RequiredArgsConstructor
 public class UserService {

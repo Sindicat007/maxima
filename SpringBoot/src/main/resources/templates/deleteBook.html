@@ -71,16 +71,26 @@
 
 
 <div class="loft-container">
-    <form action="#" th:action="@{/books/delete/{id}(id=${id})}" th:method="delete" method="delete">
+    <form id="myForm" action="#" th:action="@{/books/delete/${id}(id=${id})}" th:method="post" method="post"
+          onsubmit="updateAction()">
         <h1 class="text-center">Удаление книги</h1>
         <div class="form-group">
             <label for="id">Введите id книги для удаления</label>
-            <input type="number" th:value="${id}" id="id" name="id" placeholder="Введите ID книги" required />
+            <input type="number" th:value="${id}" id="id" name="id" placeholder="Введите ID книги" required/>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block login-btn">Удалить</button>
         </div>
     </form>
+
+    <script>
+        function updateAction() {
+            var inputValue = document.getElementById('id').value;
+            var form = document.getElementById('myForm');
+            form.action = '/books/delete/' + encodeURIComponent(inputValue); // Обновляем action формы
+        }
+    </script>
+
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

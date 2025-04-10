@@ -1,6 +1,8 @@
 package ru.maxima.spring.boot.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,12 +16,14 @@ import java.util.Optional;
 
 /*
  * Контроллер для работы с книгами.
+ *
+ * @author Sindicat
  */
-
 @Controller
 @RequestMapping("/books")
 @RequiredArgsConstructor
 public class BookController {
+    private static final Logger log = LoggerFactory.getLogger(BookController.class);
     private final BookService bookService;
 
     @GetMapping
@@ -50,7 +54,7 @@ public class BookController {
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @DeleteMapping("/delete/{id}")
+    @PostMapping("/delete/{id}")
     public String deleteBook(@PathVariable("id") Long id, Model model) {
         bookService.deleteBookById(id);
         return "redirect:/books";

@@ -1,15 +1,13 @@
 package ru.maxima.spring.boot.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 /*
  * Сущность для хранения данных о книге
+ *
+ * @author Sindicat
  */
-
 @Entity
 @Table(schema = "book_service", name = "books")
 @AllArgsConstructor

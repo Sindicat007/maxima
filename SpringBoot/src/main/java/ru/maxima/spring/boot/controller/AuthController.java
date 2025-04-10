@@ -9,8 +9,9 @@ import ru.maxima.spring.boot.service.UserService;
 
 /*
  * Контроллер для регистрации пользователей.
+ *
+ * @author Sindicat
  */
-
 @Controller
 @RequestMapping("/")
 @RequiredArgsConstructor

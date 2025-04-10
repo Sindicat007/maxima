@@ -12,8 +12,9 @@ import java.util.stream.Collectors;
 
 /*
  * Реализация интерфейса UserDetails, который предоставляет информацию о пользователе
+ *
+ * @author Sindicat
  */
-
 @AllArgsConstructor
 public class MyUserDetails implements UserDetails {
     private final UserEntity user;

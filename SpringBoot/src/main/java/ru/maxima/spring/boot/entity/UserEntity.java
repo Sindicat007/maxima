@@ -8,8 +8,9 @@ import lombok.Setter;
 
 /*
  * Сущность для хранения данных о пользователе
+ *
+ * @author Sindicat
  */
-
 @Entity
 @Table(schema = "user_service", name = "users")
 @AllArgsConstructor

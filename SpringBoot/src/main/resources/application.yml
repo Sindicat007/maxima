@@ -15,4 +15,20 @@ spring:
       ddl-auto: update
     show-sql: true
     database: postgresql
-debug: false
+
+    properties:
+      hibernate:
+        format_sql: true
+        debug: false
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+        orm:
+          jdbc:
+            bind: trace
+      type:
+        descriptor:
+          sql: trace

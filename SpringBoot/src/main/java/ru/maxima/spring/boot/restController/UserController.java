@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 /*
  * Контроллер, предназначенный для работы с пользователями.
+ *
+ * @author Sindicat
  */
-
 @RestController
 @RequestMapping("/user")
 public class UserController {

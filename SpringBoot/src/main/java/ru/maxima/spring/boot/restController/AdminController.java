@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 /*
  * Контроллер, предназначенный для работы с админами.
+ *
+ * @author Sindicat
  */
-
 @RestController
 @RequestMapping("/admin")
 public class AdminController {

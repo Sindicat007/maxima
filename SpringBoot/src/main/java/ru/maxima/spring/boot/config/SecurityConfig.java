@@ -17,8 +17,9 @@ import ru.maxima.spring.boot.security.MyUserDetailsService;
 
 /*
  * Конфигурация безопасности
+ *
+ * @author Sindicat
  */
-
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity

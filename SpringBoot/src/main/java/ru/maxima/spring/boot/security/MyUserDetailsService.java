@@ -11,8 +11,9 @@ import java.util.Optional;
 
 /*
  * Кастомная реализация сервиса аутентификации пользователя.
+ *
+ * @author Sindicat
  */
-
 public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired

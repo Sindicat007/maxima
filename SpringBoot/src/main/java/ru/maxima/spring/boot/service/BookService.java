@@ -12,8 +12,9 @@ import java.util.Optional;
 
 /*
  * Сервис для работы с книгами
+ *
+ * @author Sindicat
  */
-
 @Service
 @RequiredArgsConstructor
 public class BookService {

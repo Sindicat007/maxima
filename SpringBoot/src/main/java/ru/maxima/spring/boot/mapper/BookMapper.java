@@ -7,8 +7,9 @@ import ru.maxima.spring.boot.entity.BookEntity;
 
 /*
  * Маппер для преобразования объектов между двумя различными моделями данных.
+ *
+ * @author Sindicat
  */
-
 @Mapper(componentModel = "spring")
 public interface BookMapper {
     BookDto toBookDto(BookEntity bookEntity);

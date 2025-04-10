@@ -5,8 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /*
  * Класс для запуска проекта
+ *
+ * @author Sindicat
  */
-
 @SpringBootApplication
 public class Application {
 

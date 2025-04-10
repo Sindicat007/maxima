@@ -7,8 +7,9 @@ import java.util.Optional;
 
 /*
  * Репозиторий для работы с пользователями
+ *
+ * @author Sindicat
  */
-
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
     Optional<UserEntity> findByUsername(String username);
