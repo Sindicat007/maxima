@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список книг</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmKiV7VpLCalOHHAEuDn7fHsa8pxudoPlY2hkrzVtZLfhxulCIfjMIGGzt" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: #F9FAFB;
+            font-family: 'Open Sans', sans-serif;
+            box-sizing: border-box;
+        }
+        .loft-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+            background-color: white;
+        }
+        h1 {
+            text-align: center;
+            color: #212529;
+            margin-bottom: 40px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        thead {
+            background-color: #EDEDED;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #DCDCDC;
+        }
+        tr:nth-child(even) {
+            background-color: #F7F7F7;
+        }
+        .add-book-btn {
+            text-align: center
+            margin-top: 20px;
+            width: 200px;
+            padding: 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        .add-book-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="loft-container">
+    <h1>Список книг</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Название книги</th>
+            <th>Автор</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.name}"></td>
+            <td th:text="${book.author}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a class="add-book-btn" th:href="@{/books/add}">Добавить книгу</a>
+    <a class="add-book-btn" th:href="@{/books/delete}">Удаление книгу</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGmN05frH"
+        crossorigin="anonymous"></script>
+</body>
+</html>
