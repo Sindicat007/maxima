@@ -71,7 +71,7 @@
 
 
 <div class="loft-container">
-    <form action="#" th:action="@{/books/delete-book/{id}(id=${id})}" th:method="delete" method="delete">
+    <form action="#" th:action="@{/books/delete/{id}(id=${id})}" th:method="delete" method="delete">
         <h1 class="text-center">Удаление книги</h1>
         <div class="form-group">
             <label for="id">Введите id книги для удаления</label>

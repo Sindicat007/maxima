@@ -44,14 +44,14 @@ public class BookController {
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @GetMapping("/delete-book")
-    public String showDeleteBookForm() {
+    @GetMapping("/delete")
+    public String showDeleteBookForm(Model model) {
         return "deleteBook";
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @DeleteMapping("/delete-book/{id}")
-    public String deleteBook(@PathVariable("id") Long id) {
+    @DeleteMapping("/delete/{id}")
+    public String deleteBook(@PathVariable("id") Long id, Model model) {
         bookService.deleteBookById(id);
         return "redirect:/books";
     }
