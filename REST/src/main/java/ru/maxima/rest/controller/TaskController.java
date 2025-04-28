@@ -3,11 +3,9 @@ package ru.maxima.rest.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.maxima.rest.entity.Task;
 import ru.maxima.rest.repository.TaskRepository;
 
-import java.net.URI;
 import java.util.List;
 import java.util.Map;
 
@@ -22,8 +20,8 @@ public class TaskController {
     private final TaskRepository taskRepository;
 
     @GetMapping
-    public List<Task> getAllTasks() {
-        return taskRepository.findAll();
+    public ResponseEntity<List<Task>> getAllTasks() {
+        return ResponseEntity.ok(taskRepository.findAll());
     }
 
     @GetMapping("/{id}")
@@ -35,12 +33,7 @@ public class TaskController {
 
     @PostMapping
     public ResponseEntity<Task> createTask(@RequestBody Task task) {
-        taskRepository.save(task);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(task.getId())
-                .toUri();
-        return ResponseEntity.created(location).build();
+        return ResponseEntity.ok(taskRepository.save(task));
     }
 
     @PutMapping("/{id}")
