@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: RESTClient
+
+server:
+  port: 8081
