@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: RestSecurity
+server:
+  port: 8080
+  ssl:
+    enabled: true
+    key-store: classpath:keystore.p12
+    key-store-password: password
+    key-store-type: PKCS12
+    key-alias: mysslcert
